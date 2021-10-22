@@ -5,6 +5,7 @@ import { Link, Redirect } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import useAuth from 'utils/hooks/useAuth';
 import AuthAPI from 'services/api';
+import { toast } from 'react-toastify';
 import { validationSchema } from './schema';
 import * as S from './styles';
 
@@ -26,7 +27,7 @@ const LoginForm = (): JSX.Element => {
   const onSubmit: SubmitHandler<IFormInput> = ({ username, password }) => {
     AuthAPI.login(username, password)
       .then(() => loginCtx())
-      .catch((err) => console.log(err));
+      .catch((err) => toast.error(err.message));
   };
 
   if (isAuthenticated) {
