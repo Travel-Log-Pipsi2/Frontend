@@ -8,6 +8,10 @@ export interface ITheme {
     family: FontFamilyType;
     size: FontSizeType;
   };
+  breakpoints: {
+    desktop: string;
+    tablet: string;
+  };
 }
 
 type ColorType = {

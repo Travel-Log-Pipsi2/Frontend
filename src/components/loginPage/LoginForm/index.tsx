@@ -26,7 +26,10 @@ const LoginForm = (): JSX.Element => {
 
   const onSubmit: SubmitHandler<IFormInput> = ({ username, password }) => {
     AuthAPI.login(username, password)
-      .then(() => loginCtx())
+      .then(() => {
+        loginCtx();
+        toast.success('Witaj ponownie!');
+      })
       .catch((err) => toast.error(err.message));
   };
 

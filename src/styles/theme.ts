@@ -25,6 +25,10 @@ const theme: ITheme = {
       small: '0.75rem',
     },
   },
+  breakpoints: {
+    tablet: ' 768px',
+    desktop: '1024px',
+  },
 };
 
 export { theme };
