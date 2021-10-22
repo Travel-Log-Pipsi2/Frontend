@@ -2,7 +2,7 @@ import AuthContext from 'context/auth';
 import { ReactNode, useContext, useEffect, useMemo, useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { IUser } from 'types/types';
-import { getLSItem, removeLSItem, setLSItem } from 'utils/helpers/localStorage';
+import Cookies from 'js-cookie';
 
 export function AuhtProvider({
   children,
@@ -19,7 +19,7 @@ export function AuhtProvider({
   const location = useLocation();
 
   useEffect(() => {
-    if (getLSItem('token')) {
+    if (Cookies.get('token')) {
       setUser({
         email: 'test@test.pl',
         name: 'Testowy',
@@ -27,31 +27,26 @@ export function AuhtProvider({
       setAuthenticated(true);
     }
     setLoadingInitial(false);
-    console.log('WSTĘPNA INIT');
+    console.log('WSTĘPNY INIT');
   }, []);
 
   useEffect(() => {
     if (error) setError(null);
   }, [location.pathname]);
 
-  const login = (email: string, password: string) => {
-    setUser({
-      email: 'test@test.pl',
-      name: 'Testowy',
-    });
+  const loginCtx = () => {
     setAuthenticated(true);
-    setLSItem('token', 'testowy');
     console.log('ZALOGOWANO');
   };
 
-  const logout = () => {
+  const logoutCtx = () => {
     setUser(null);
     setAuthenticated(false);
-    removeLSItem('token');
+    Cookies.remove('token');
     console.log('WYLOGOWANO');
   };
 
-  const signUp = () => {
+  const signUpCtx = () => {
     console.log('REJESTRACJA');
   };
 
@@ -60,9 +55,9 @@ export function AuhtProvider({
       user,
       loading,
       error,
-      login,
-      logout,
-      signUp,
+      loginCtx,
+      logoutCtx,
+      signUpCtx,
       isAuthenticated,
     }),
     [user, loading, error, isAuthenticated]

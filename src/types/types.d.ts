@@ -9,9 +9,9 @@ interface IAuthContextType {
   user?: IUser;
   loading: boolean;
   error?: any;
-  login: (email: string, password: string) => void;
-  signUp: (email: string, name: string, passwords: string) => void;
-  logout: () => void;
+  loginCtx: () => void;
+  signUpCtx: () => void;
+  logoutCtx: () => void;
 }
 
 export { IUser, IAuthContextType };

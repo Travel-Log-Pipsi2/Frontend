@@ -1,7 +1,9 @@
-import React from 'react';
+import { RegisterForm } from 'components/registerPage';
 
-const RegisterPage = (): JSX.Element => {
-  return <div>Register Page</div>;
-};
+const RegisterPage = (): JSX.Element => (
+  <section>
+    <RegisterForm />
+  </section>
+);
 
 export default RegisterPage;
