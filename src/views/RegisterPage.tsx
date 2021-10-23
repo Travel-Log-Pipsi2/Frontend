@@ -1,4 +1,4 @@
-import { RegisterForm } from 'components/registerPage';
+import { RegisterForm } from 'components';
 
 const RegisterPage = (): JSX.Element => (
   <section>

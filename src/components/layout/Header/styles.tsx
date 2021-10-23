@@ -14,6 +14,7 @@ const Header = styled.header<{ isHidden: boolean }>`
   justify-content: space-between;
   align-items: center;
   gap: 8px;
+  z-index: 10;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     label {
