@@ -1,3 +1,4 @@
+import { Marker } from 'react-map-gl';
 import styled from 'styled-components';
 
 const MapWrapper = styled.div`
@@ -38,6 +39,7 @@ const GeocoderWrapper = styled.div<{ isActive: boolean }>`
       border: 1px solid ${({ theme }) => theme.colors.black};
       outline: none;
       transition: all 500ms ease;
+      font-size: 16px;
     }
 
     .react-geocoder-results {
@@ -65,4 +67,17 @@ const GeocoderWrapper = styled.div<{ isActive: boolean }>`
   }
 `;
 
-export { MapWrapper, SearchIcon, GeocoderWrapper };
+const StyledMarker = styled(Marker)`
+  width: 40px;
+
+  svg {
+    cursor: pointer;
+    filter: drop-shadow(0 0 2px green);
+
+    path {
+      fill: green;
+    }
+  }
+`;
+
+export { MapWrapper, SearchIcon, GeocoderWrapper, StyledMarker };

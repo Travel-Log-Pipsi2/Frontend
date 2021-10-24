@@ -9,7 +9,7 @@ export function AuhtProvider({
 }: {
   children: ReactNode;
 }): JSX.Element {
-  const [isAuthenticated, setAuthenticated] = useState<boolean>(false);
+  const [isAuthenticated, setAuthenticated] = useState<boolean>(true);
   const [user, setUser] = useState<IUser>();
   const [error, setError] = useState<any>();
   const [loading, setLoading] = useState<boolean>(false);

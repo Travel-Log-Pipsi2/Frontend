@@ -10,7 +10,9 @@ const Header = () => {
   useScrollPosition(
     ({ prevPos, currPos }) => {
       const isShow = currPos.y < prevPos.y;
+      // console.log(currPos);
       if (isShow !== isHidden) setHiden(isShow);
+      // OGARNAC NA SAFARI SCROLL OD PEWNEGO MOMNETU
     },
     [isHidden]
   );
