@@ -1,8 +1,10 @@
-import { useCallback, useRef, useState } from 'react';
-import ReactMapGL, { Marker } from 'react-map-gl';
+import React, { useCallback, useRef, useState } from 'react';
+import ReactMapGL, { Popup } from 'react-map-gl';
 import Geocoder from 'react-mapbox-gl-geocoder';
-import MarkerSVG from 'static/icons/marker';
+import { useHistory } from 'react-router-dom';
 import * as S from './styles';
+import Marker from './Marker';
+import NotPlacedPopup from './Popup';
 
 const mapStyle = {
   width: '100%',
@@ -12,14 +14,16 @@ const mapStyle = {
 const Map = (): JSX.Element => {
   const [searchActive, setSearchActive] = useState(false);
   const [tempMarker, setTempMarker] = useState(null);
+  const [tempMarkerPopup, setTempMarkerPopup] = useState(false);
   const [viewport, setViewport] = useState({
     latitude: 50.0121,
     longitude: 20.9858,
     zoom: 3,
   });
   const mapRef = useRef();
+  const history = useHistory();
 
-  const handleViewportChange = useCallback((newViewport, item) => {
+  const handleViewportChange = useCallback((newViewport) => {
     setViewport(newViewport);
   }, []);
 
@@ -29,6 +33,7 @@ const Map = (): JSX.Element => {
       name: item.place_name,
       longitude: item.center[0],
       latitude: item.center[1],
+      ...item,
     });
   }, []);
 
@@ -41,6 +46,7 @@ const Map = (): JSX.Element => {
     <S.MapWrapper>
       <S.GeocoderWrapper isActive={searchActive}>
         <S.SearchIcon onClick={handleSearchActivation} />
+
         <Geocoder
           mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
           onSelected={handleSelect}
@@ -48,6 +54,7 @@ const Map = (): JSX.Element => {
           mapRef={mapRef}
         />
       </S.GeocoderWrapper>
+
       <ReactMapGL
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
         mapStyle="mapbox://styles/shiragaira/ckuhj4iu702br17mns49xrreu"
@@ -57,16 +64,22 @@ const Map = (): JSX.Element => {
         onViewportChange={handleViewportChange}
       >
         {tempMarker && (
-          <S.StyledMarker
+          <Marker
             longitude={tempMarker.longitude}
             latitude={tempMarker.latitude}
-          >
-            <MarkerSVG />
-          </S.StyledMarker>
+            onClick={() => setTempMarkerPopup(true)}
+          />
+        )}
+
+        {tempMarker && tempMarkerPopup && (
+          <NotPlacedPopup
+            marker={tempMarker}
+            closePopup={() => setTempMarkerPopup(false)}
+          />
         )}
       </ReactMapGL>
     </S.MapWrapper>
   );
 };
 
-export default Map;
+export default React.memo(Map);

@@ -67,17 +67,4 @@ const GeocoderWrapper = styled.div<{ isActive: boolean }>`
   }
 `;
 
-const StyledMarker = styled(Marker)`
-  width: 40px;
-
-  svg {
-    cursor: pointer;
-    filter: drop-shadow(0 0 2px green);
-
-    path {
-      fill: green;
-    }
-  }
-`;
-
-export { MapWrapper, SearchIcon, GeocoderWrapper, StyledMarker };
+export { MapWrapper, SearchIcon, GeocoderWrapper };

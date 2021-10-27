@@ -1,4 +1,7 @@
 import { Map } from 'components';
+import { routes } from 'constants/routes';
+import { Route, Switch } from 'react-router-dom';
+import AddTravel from './Main/AddTravel';
 
 const MainPage = (): JSX.Element => {
   console.log('ASD');
@@ -6,21 +9,9 @@ const MainPage = (): JSX.Element => {
   return (
     <section>
       <Map />
-      <h1>TEST</h1>
-      <h1>TEST</h1>
-      <h1>TEST</h1>
-      <h1>TEST</h1>
-      <h1>TEST</h1>
-      <h1>TEST</h1>
-      <h1>TEST</h1>
-      <h1>TEST</h1>
-      <h1>TEST</h1>
-      <h1>TEST</h1>
-      <h1>TEST</h1>
-      <h1>TEST</h1>
-      <h1>TEST</h1>
-      <h1>TEST</h1>
-      <h1>TEST</h1>
+      <Switch>
+        <Route exact path={routes.addTravel} component={AddTravel} />
+      </Switch>
     </section>
   );
 };

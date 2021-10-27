@@ -1,13 +1,23 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-const StyledPrimaryButton = styled.button`
+const mixin = css`
   padding: 12px 28px;
-  background-color: ${({ theme }) => theme.colors.black};
   border: 1px solid ${({ theme }) => theme.colors.black};
   border-radius: 8px;
-  color: ${({ theme }) => theme.colors.white};
   font-size: ${({ theme }) => theme.typography.size.p};
   cursor: pointer;
 `;
 
-export { StyledPrimaryButton };
+const StyledPrimaryButton = styled.button`
+  ${mixin}
+  background-color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.colors.white};
+`;
+
+const StyledGhostButton = styled.button`
+  ${mixin}
+  background-color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.black};
+`;
+
+export { StyledPrimaryButton, StyledGhostButton };

@@ -1,4 +1,4 @@
 import { StyledInput } from './Input';
-import { StyledPrimaryButton } from './Button';
+import { StyledPrimaryButton, StyledGhostButton } from './Button';
 
-export { StyledInput, StyledPrimaryButton };
+export { StyledInput, StyledPrimaryButton, StyledGhostButton };

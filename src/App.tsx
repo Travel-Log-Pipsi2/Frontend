@@ -1,5 +1,5 @@
 import { ThemeProvider } from 'styled-components';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { routes } from 'constants/routes';
 import { LandingPage, LoginPage, MainPage, RegisterPage } from 'views';
 import { PrivateRoute } from 'components/router';
@@ -19,10 +19,12 @@ function App() {
           <ToastContainer />
           <GlobalStyles />
           <Header />
-          <Route path={routes.landing} component={LandingPage} />
-          <Route path={routes.login} component={LoginPage} />
-          <Route path={routes.register} component={RegisterPage} />
-          <PrivateRoute exact path={routes.home} component={MainPage} />
+          <Switch>
+            <Route exact path={routes.landing} component={LandingPage} />
+            <Route exact path={routes.login} component={LoginPage} />
+            <Route exact path={routes.register} component={RegisterPage} />
+            <PrivateRoute path={routes.home} component={MainPage} />
+          </Switch>
         </ThemeProvider>
       </AuhtProvider>
     </Router>
