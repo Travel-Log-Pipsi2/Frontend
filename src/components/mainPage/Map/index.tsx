@@ -46,7 +46,6 @@ const Map = (): JSX.Element => {
     <S.MapWrapper>
       <S.GeocoderWrapper isActive={searchActive}>
         <S.SearchIcon onClick={handleSearchActivation} />
-
         <Geocoder
           mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
           onSelected={handleSelect}

@@ -9,7 +9,7 @@ export function AuhtProvider({
 }: {
   children: ReactNode;
 }): JSX.Element {
-  const [isAuthenticated, setAuthenticated] = useState<boolean>(true);
+  const [isAuthenticated, setAuthenticated] = useState<boolean>(false);
   const [user, setUser] = useState<IUser>();
   const [error, setError] = useState<any>();
   const [loading, setLoading] = useState<boolean>(false);
@@ -27,7 +27,6 @@ export function AuhtProvider({
       setAuthenticated(true);
     }
     setLoadingInitial(false);
-    console.log('WSTĘPNY INIT');
   }, []);
 
   useEffect(() => {
@@ -36,19 +35,15 @@ export function AuhtProvider({
 
   const loginCtx = () => {
     setAuthenticated(true);
-    console.log('ZALOGOWANO');
   };
 
   const logoutCtx = () => {
     setUser(null);
     setAuthenticated(false);
     Cookies.remove('token');
-    console.log('WYLOGOWANO');
   };
 
-  const signUpCtx = () => {
-    console.log('REJESTRACJA');
-  };
+  const signUpCtx = () => {};
 
   const memoedValue = useMemo(
     () => ({

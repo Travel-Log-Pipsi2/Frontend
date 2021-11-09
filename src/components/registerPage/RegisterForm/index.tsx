@@ -37,7 +37,7 @@ const RegisterForm = (): JSX.Element => {
   };
 
   if (isAuthenticated) {
-    return <Redirect to="/" />;
+    return <Redirect to={routes.home} />;
   }
 
   return (

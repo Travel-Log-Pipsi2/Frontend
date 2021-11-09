@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 interface IUser {
   email: string;
   name: string;
@@ -14,4 +13,13 @@ interface IAuthContextType {
   logoutCtx: () => void;
 }
 
-export { IUser, IAuthContextType };
+interface IAddTravelContextType {
+  geoData: {
+    longitute: number;
+    latitude: number;
+    name: string;
+  };
+  initAdd: (point: unknown) => void;
+}
+
+export { IUser, IAuthContextType, IAddTravelContextType };

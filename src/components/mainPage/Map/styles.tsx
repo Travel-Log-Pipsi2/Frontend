@@ -1,4 +1,3 @@
-import { Marker } from 'react-map-gl';
 import styled from 'styled-components';
 
 const MapWrapper = styled.div`

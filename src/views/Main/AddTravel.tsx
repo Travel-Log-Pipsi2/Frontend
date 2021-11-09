@@ -1,11 +1,18 @@
-import React from 'react';
+import { AddTravelForm } from 'components';
+import AddTravelContext from 'context/addTravel';
+import { useContext, useEffect } from 'react';
 
 const AddTravel = (): JSX.Element => {
-  console.log('INIT');
+  const { initAdd } = useContext(AddTravelContext);
+
+  useEffect(() => {
+    console.log('Add payment component init');
+  }, []);
+
   return (
-    <div>
-      <h1>Add travel</h1>
-    </div>
+    <section>
+      <AddTravelForm />
+    </section>
   );
 };
 

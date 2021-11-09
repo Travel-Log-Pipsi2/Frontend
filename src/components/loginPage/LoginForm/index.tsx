@@ -10,7 +10,7 @@ import { validationSchema } from './schema';
 import * as S from './styles';
 
 interface IFormInput {
-  username: string;
+  email: string;
   password: string;
 }
 
@@ -24,8 +24,8 @@ const LoginForm = (): JSX.Element => {
   });
   const { isAuthenticated, loginCtx } = useAuth();
 
-  const onSubmit: SubmitHandler<IFormInput> = ({ username, password }) => {
-    AuthAPI.login(username, password)
+  const onSubmit: SubmitHandler<IFormInput> = ({ email, password }) => {
+    AuthAPI.login(email, password)
       .then(() => {
         loginCtx();
         toast.success('Witaj ponownie!');
@@ -34,7 +34,7 @@ const LoginForm = (): JSX.Element => {
   };
 
   if (isAuthenticated) {
-    return <Redirect to="/" />;
+    return <Redirect to={routes.home} />;
   }
 
   return (
@@ -43,10 +43,10 @@ const LoginForm = (): JSX.Element => {
         <h1>Logowanie</h1>
 
         <S.Input
-          {...register('username')}
-          type="text"
-          placeholder="Nazwa użytkownika"
-          isError={!!errors.username}
+          {...register('email')}
+          type="email"
+          placeholder="Adres e-mail"
+          isError={!!errors.email}
         />
         <S.Input
           {...register('password')}

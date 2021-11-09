@@ -5,6 +5,7 @@ import { LandingPage, LoginPage, MainPage, RegisterPage } from 'views';
 import { PrivateRoute } from 'components/router';
 import { AuhtProvider } from 'utils/hooks/useAuth';
 import { ToastContainer } from 'react-toastify';
+import { AddTravelProvider } from 'utils/hooks/useAddTravel';
 import Header from './components/layout/Header';
 import { GlobalStyles } from './styles/global';
 import { theme } from './styles/theme';
@@ -15,17 +16,19 @@ function App() {
   return (
     <Router>
       <AuhtProvider>
-        <ThemeProvider theme={theme}>
-          <ToastContainer />
-          <GlobalStyles />
-          <Header />
-          <Switch>
-            <Route exact path={routes.landing} component={LandingPage} />
-            <Route exact path={routes.login} component={LoginPage} />
-            <Route exact path={routes.register} component={RegisterPage} />
-            <PrivateRoute path={routes.home} component={MainPage} />
-          </Switch>
-        </ThemeProvider>
+        <AddTravelProvider>
+          <ThemeProvider theme={theme}>
+            <ToastContainer />
+            <GlobalStyles />
+            <Header />
+            <Switch>
+              <Route exact path={routes.landing} component={LandingPage} />
+              <Route exact path={routes.login} component={LoginPage} />
+              <Route exact path={routes.register} component={RegisterPage} />
+              <PrivateRoute path={routes.home} component={MainPage} />
+            </Switch>
+          </ThemeProvider>
+        </AddTravelProvider>
       </AuhtProvider>
     </Router>
   );
