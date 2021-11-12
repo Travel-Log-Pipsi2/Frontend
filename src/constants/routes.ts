@@ -3,5 +3,6 @@ export const routes = {
   login: '/login',
   register: '/register',
   landing: '/landing',
-  addTravel: '/addTravel',
+  forgotPass: '/forgot-pass',
+  addTravel: '/add-travel',
 };

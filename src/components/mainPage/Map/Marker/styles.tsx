@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 const StyledMarker = styled(Marker)`
   width: 40px;
-  border: 1px solid red;
 
   svg {
     cursor: pointer;
