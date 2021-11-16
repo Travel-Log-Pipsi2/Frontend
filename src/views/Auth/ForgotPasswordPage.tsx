@@ -1,6 +1,8 @@
+import { ForgotPassForm } from 'components';
+
 const ForgotPasswordPage = (): JSX.Element => (
   <section>
-    <h1>Forgot password</h1>
+    <ForgotPassForm />
   </section>
 );
 

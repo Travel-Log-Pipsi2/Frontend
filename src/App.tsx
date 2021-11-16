@@ -1,7 +1,14 @@
 import { ThemeProvider } from 'styled-components';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { routes } from 'constants/routes';
-import { LandingPage, LoginPage, MainPage, RegisterPage } from 'views';
+import {
+  ForgotPasswordPage,
+  LandingPage,
+  LoginPage,
+  MainPage,
+  RegisterPage,
+  ResetPasswordPage,
+} from 'views';
 import { PrivateRoute } from 'components/router';
 import { AuhtProvider } from 'utils/hooks/useAuth';
 import { ToastContainer } from 'react-toastify';
@@ -25,6 +32,16 @@ function App() {
               <Route exact path={routes.landing} component={LandingPage} />
               <Route exact path={routes.login} component={LoginPage} />
               <Route exact path={routes.register} component={RegisterPage} />
+              <Route
+                exact
+                path={routes.forgotPass}
+                component={ForgotPasswordPage}
+              />
+              <Route
+                exact
+                path={routes.resetPass}
+                component={ResetPasswordPage}
+              />
               <PrivateRoute path={routes.home} component={MainPage} />
             </Switch>
           </ThemeProvider>

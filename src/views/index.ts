@@ -1,6 +1,15 @@
 import LandingPage from './LandingPage';
-import RegisterPage from './RegisterPage';
-import LoginPage from './LoginPage';
+import RegisterPage from './Auth/RegisterPage';
+import LoginPage from './Auth/LoginPage';
 import MainPage from './MainPage';
+import ForgotPasswordPage from './Auth/ForgotPasswordPage';
+import ResetPasswordPage from './Auth/ResetPasswordPage';
 
-export { LandingPage, LoginPage, RegisterPage, MainPage };
+export {
+  LandingPage,
+  LoginPage,
+  RegisterPage,
+  MainPage,
+  ForgotPasswordPage,
+  ResetPasswordPage,
+};

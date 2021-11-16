@@ -60,6 +60,8 @@ const LoginForm = (): JSX.Element => {
         <Link to={routes.register}>
           Nie posiadasz jeszcze swoje konta? Załóż je!
         </Link>
+
+        <Link to={routes.forgotPass}>Nie pamiętasz hasła?</Link>
       </S.Form>
     </S.Section>
   );

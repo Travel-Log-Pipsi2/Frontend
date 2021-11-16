@@ -5,10 +5,10 @@ class AuthService {
   readonly baseUrl: string;
 
   constructor() {
-    this.baseUrl = 'https://localhost:53495/api';
+    this.baseUrl = 'https://localhost:52231/api';
 
     axios
-      .get('https://localhost:53495/api/Test')
+      .get('https://localhost:52231/api/Test')
       .then(() => console.log('Connection established'))
       .catch((err) => console.log(err));
   }
@@ -34,6 +34,40 @@ class AuthService {
   logout = () => {
     Cookies.remove('token');
   };
+
+  forgotPassword = (email: string) =>
+    axios
+      .post<any>(`${this.baseUrl}/Authenticate/Forgot-password`, null, {
+        params: {
+          email,
+        },
+      })
+      .then(({ data }) => {
+        console.log('POmyślnie wysłano reset');
+        console.log(data);
+        return Promise.resolve(data);
+      })
+      .catch((error) => Promise.reject(error));
+
+  resetPassword = (
+    email: string,
+    newPassword: string,
+    confirmNewPassword: string,
+    token: string
+  ) =>
+    axios
+      .post<any>(`${this.baseUrl}/Authenticate/Reset-password`, {
+        email,
+        newPassword,
+        confirmNewPassword,
+        token,
+      })
+      .then(({ data }) => {
+        console.log('Hasło zresetowane!');
+
+        return Promise.resolve(data);
+      })
+      .catch((error) => Promise.reject(error));
 
   register = (
     username: string,

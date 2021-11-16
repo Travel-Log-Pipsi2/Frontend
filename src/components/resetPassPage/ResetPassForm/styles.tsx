@@ -1,14 +1,9 @@
 import { StyledInput, StyledPrimaryButton } from 'components/shared';
 import styled from 'styled-components';
 
-const Section = styled.div`
-  margin-inline: auto;
+const Wrapper = styled.div`
   margin-top: 72px;
-
-  a {
-    color: ${({ theme }) => theme.colors.black};
-    font-size: ${({ theme }) => theme.typography.size.small};
-  }
+  margin-inline: auto;
 `;
 
 const Form = styled.form`
@@ -22,8 +17,6 @@ const Form = styled.form`
   padding-inline: 24px;
 `;
 
-const ErrorMessage = styled.p``;
-
 const Input = styled(StyledInput)<{ isError: boolean }>`
   border: 1px solid
     ${({ theme, isError }) => (isError ? 'red' : theme.colors.black)};
@@ -31,4 +24,6 @@ const Input = styled(StyledInput)<{ isError: boolean }>`
 
 const Button = styled(StyledPrimaryButton)``;
 
-export { Form, Section, Input, Button, ErrorMessage };
+const ErrorMessage = styled.p``;
+
+export { Wrapper, Button, Input, Form, ErrorMessage };
