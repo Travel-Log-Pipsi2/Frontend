@@ -2,6 +2,7 @@ import React, { useCallback, useRef, useState } from 'react';
 import ReactMapGL, { Popup } from 'react-map-gl';
 import Geocoder from 'react-mapbox-gl-geocoder';
 import { useHistory } from 'react-router-dom';
+import useTheme from 'utils/hooks/useTheme';
 import * as S from './styles';
 import Marker from './Marker';
 import NotPlacedPopup from './Popup';
@@ -22,6 +23,9 @@ const Map = (): JSX.Element => {
   });
   const mapRef = useRef();
   const history = useHistory();
+  const { isDarkMode } = useTheme();
+
+  console.log(isDarkMode);
 
   const handleViewportChange = useCallback((newViewport) => {
     setViewport(newViewport);
@@ -56,7 +60,11 @@ const Map = (): JSX.Element => {
 
       <ReactMapGL
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
-        mapStyle="mapbox://styles/shiragaira/ckuhj4iu702br17mns49xrreu"
+        mapStyle={
+          isDarkMode
+            ? 'mapbox://styles/mapbox/dark-v10'
+            : 'mapbox://styles/shiragaira/ckuhj4iu702br17mns49xrreu'
+        }
         ref={mapRef}
         {...mapStyle}
         {...viewport}

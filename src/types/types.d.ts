@@ -1,3 +1,5 @@
+import { ITheme } from 'styles/styled';
+
 interface IUser {
   email: string;
   name: string;
@@ -22,4 +24,10 @@ interface IAddTravelContextType {
   initAdd: (point: unknown) => void;
 }
 
-export { IUser, IAuthContextType, IAddTravelContextType };
+interface IThemeContext {
+  currTheme: ITheme;
+  isDarkMode: boolean;
+  changeTheme: () => void;
+}
+
+export { IUser, IAuthContextType, IAddTravelContextType, IThemeContext };

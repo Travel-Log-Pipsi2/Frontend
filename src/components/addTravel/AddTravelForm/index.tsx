@@ -2,6 +2,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import AddTravelContext from 'context/addTravel';
 import { useContext, useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 import * as S from './styles';
 import { validationSchema } from './schema';
 
@@ -29,8 +30,8 @@ const AddTravelForm = (): JSX.Element => {
   }, [geoData]);
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
-    console.log(data);
-    reset();
+    toast.success('Nowe miejsce dodane!');
+    reset({});
   };
 
   return (

@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 
 const AddTravel = (): JSX.Element => {
   useEffect(() => {
-    console.log('Add payment component init');
+    console.log('Add travel component init');
   }, []);
 
   return (
