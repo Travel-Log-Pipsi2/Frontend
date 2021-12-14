@@ -25,8 +25,6 @@ const Map = (): JSX.Element => {
   const history = useHistory();
   const { isDarkMode } = useTheme();
 
-  console.log(isDarkMode);
-
   const handleViewportChange = useCallback((newViewport) => {
     setViewport(newViewport);
   }, []);

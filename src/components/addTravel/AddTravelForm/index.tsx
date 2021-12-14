@@ -3,6 +3,7 @@ import AddTravelContext from 'context/addTravel';
 import { useContext, useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
+import { useTranslation } from 'react-i18next';
 import * as S from './styles';
 import { validationSchema } from './schema';
 
@@ -15,6 +16,7 @@ interface IFormInput {
 
 const AddTravelForm = (): JSX.Element => {
   const { geoData } = useContext(AddTravelContext);
+  const { t } = useTranslation('addTravel');
 
   const {
     register,
@@ -30,34 +32,37 @@ const AddTravelForm = (): JSX.Element => {
   }, [geoData]);
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
-    toast.success('Nowe miejsce dodane!');
+    toast.success(t('addTravel.notification.success'));
     reset({});
   };
 
   return (
     <S.Wrapper>
-      <h2>Dodaj podróż</h2>
+      <h2>{t('addTravel.title')}</h2>
       <S.Form onSubmit={handleSubmit(onSubmit)}>
         <S.Input
           {...register('name')}
           type="text"
-          placeholder="Nazwa miejsca"
+          placeholder={t('addTravel.form.name')}
           isError={!!errors.name}
         />
         <S.Input
           {...register('longitude')}
           type="text"
-          placeholder="Długość geo"
+          placeholder={t('addTravel.form.longitude')}
           isError={!!errors.longitude}
         />
         <S.Input
           {...register('latitude')}
           type="text"
-          placeholder="Szerokość geo"
+          placeholder={t('addTravel.form.latitude')}
           isError={!!errors.latitude}
         />
-        <S.Textarea {...register('description')} placeholder="Opis miejsca" />
-        <S.Button type="submit">Dodaj</S.Button>
+        <S.Textarea
+          {...register('description')}
+          placeholder={t('addTravel.form.description')}
+        />
+        <S.Button type="submit">{t('addTravel.form.button')}</S.Button>
       </S.Form>
     </S.Wrapper>
   );

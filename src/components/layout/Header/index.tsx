@@ -1,5 +1,7 @@
+/* eslint-disable no-unused-expressions */
 import { useScrollPosition } from '@n8tb1t/use-scroll-position';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import useTheme from 'utils/hooks/useTheme';
 import Switch from '../../shared/Switch';
 import Navigation from './Navigation';
@@ -7,7 +9,13 @@ import * as S from './styles';
 
 const Header = () => {
   const [isHidden, setHiden] = useState(false);
+  const [isPolish, setPolish] = useState(false);
   const { changeTheme, isDarkMode } = useTheme();
+  const { i18n } = useTranslation(['addTravel', 'common']);
+
+  useEffect(() => {
+    isPolish ? i18n.changeLanguage('pl') : i18n.changeLanguage('en');
+  }, [isPolish, i18n]);
 
   useScrollPosition(
     ({ prevPos, currPos }) => {
@@ -19,6 +27,10 @@ const Header = () => {
     [isHidden]
   );
 
+  const changeLanguage = () => {
+    setPolish((prev) => !prev);
+  };
+
   return (
     <S.Header isHidden={isHidden}>
       <Switch
@@ -28,7 +40,13 @@ const Header = () => {
         onLabel="D"
         offLabel="L"
       />
-      <Switch id="language" onLabel="EN" offLabel="PL" />
+      <Switch
+        currentValue={isPolish}
+        onChange={changeLanguage}
+        id="language"
+        onLabel="EN"
+        offLabel="PL"
+      />
 
       <h1>WHIB</h1>
 

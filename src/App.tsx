@@ -14,6 +14,7 @@ import { AuhtProvider } from 'utils/hooks/useAuth';
 import { ToastContainer } from 'react-toastify';
 import { AddTravelProvider } from 'utils/hooks/useAddTravel';
 import useTheme, { ThemeContextProvider } from 'utils/hooks/useTheme';
+import { Suspense } from 'react';
 import Header from './components/layout/Header';
 import { GlobalStyles } from './styles/global';
 
@@ -43,11 +44,13 @@ function App() {
   return (
     <Router>
       <AuhtProvider>
-        <ThemeContextProvider>
-          <AddTravelProvider>
-            <InnerWrapper />
-          </AddTravelProvider>
-        </ThemeContextProvider>
+        <Suspense fallback="Loading...">
+          <ThemeContextProvider>
+            <AddTravelProvider>
+              <InnerWrapper />
+            </AddTravelProvider>
+          </ThemeContextProvider>
+        </Suspense>
       </AuhtProvider>
     </Router>
   );
