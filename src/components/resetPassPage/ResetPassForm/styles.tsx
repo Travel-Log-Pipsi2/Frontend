@@ -4,6 +4,10 @@ import styled from 'styled-components';
 const Wrapper = styled.div`
   margin-top: 72px;
   margin-inline: auto;
+
+  h1 {
+    text-align: center;
+  }
 `;
 
 const Form = styled.form`

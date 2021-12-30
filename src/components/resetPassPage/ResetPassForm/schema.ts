@@ -1,9 +1,11 @@
 import * as Yup from 'yup';
 
 const validationSchema = Yup.object({
-  email: Yup.string().email().required(),
-  password: Yup.string().required(),
-  confirmPassword: Yup.string().oneOf([Yup.ref('password'), null]),
+  password: Yup.string().required('common.yup.required'),
+  confirmPassword: Yup.string().oneOf(
+    [Yup.ref('password'), null],
+    'common.yup.password_not_match'
+  ),
 });
 
 export { validationSchema };

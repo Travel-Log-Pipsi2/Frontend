@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const Section = styled.section`
   margin-inline: auto;
+  margin-top: 72px;
 
   a {
     color: ${({ theme }) => theme.colors.black};

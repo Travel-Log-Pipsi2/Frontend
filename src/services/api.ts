@@ -5,10 +5,10 @@ class AuthService {
   readonly baseUrl: string;
 
   constructor() {
-    this.baseUrl = 'https://localhost:49860/api';
+    this.baseUrl = 'https://localhost:51050/api';
 
     axios
-      .get('https://localhost:49860/api/Test')
+      .get('https://localhost:51050/api/Test')
       .then(() => console.log('Connection established'))
       .catch((err) => console.log(err));
   }
@@ -42,11 +42,7 @@ class AuthService {
           email,
         },
       })
-      .then(({ data }) => {
-        console.log('POmyślnie wysłano reset');
-        console.log(data);
-        return Promise.resolve(data);
-      })
+      .then(({ data }) => Promise.resolve(data))
       .catch((error) => Promise.reject(error));
 
   resetPassword = (
@@ -62,11 +58,7 @@ class AuthService {
         confirmNewPassword,
         token,
       })
-      .then(({ data }) => {
-        console.log('Hasło zresetowane!');
-
-        return Promise.resolve(data);
-      })
+      .then(({ data }) => Promise.resolve(data))
       .catch((error) => Promise.reject(error));
 
   register = (

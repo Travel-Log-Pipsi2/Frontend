@@ -1,15 +1,23 @@
-import React from 'react';
+/* eslint-disable function-paren-newline */
+import React, { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import AuthAPI from 'services/api';
-import * as S from './styles';
+import { toast } from 'react-toastify';
+
+import { Redirect } from 'react-router-dom';
+import { routes } from 'constants/routes';
+import { useTranslation } from 'react-i18next';
+import { FormInput } from 'components/shared';
 import { validationSchema } from './schema';
+import * as S from './styles';
 
 interface IFormInput {
   email: string;
 }
 
 const ForgotPassForm = () => {
+  const { t } = useTranslation('common');
   const {
     register,
     handleSubmit,
@@ -17,27 +25,38 @@ const ForgotPassForm = () => {
   } = useForm<IFormInput>({
     resolver: yupResolver(validationSchema),
   });
+  const [resetSend, setResetSend] = useState(false);
 
   const onSubmit: SubmitHandler<IFormInput> = ({ email }) => {
-    AuthAPI.forgotPassword(email)
-      .then(() => {
-        console.log('Reset hasła wysłany');
-      })
-      .catch((err) => console.log(err));
+    AuthAPI.forgotPassword(email).then((data) => {
+      if (data.statusCode === 200) {
+        toast.success(t('common.forgot_password_page.notification.success'));
+        setResetSend(true);
+      } else {
+        toast.error(t('common.forgot_password_page.notification.error'));
+      }
+    });
   };
+
+  if (resetSend) {
+    return <Redirect to={routes.login} />;
+  }
 
   return (
     <S.Wrapper>
       <S.Form onSubmit={handleSubmit(onSubmit)}>
-        <h1>Zapomniałem hasła</h1>
-        <S.Input
-          {...register('email')}
+        <h1>{t('common.forgot_password_page.ui.title')}</h1>
+        <FormInput
+          register={register}
           type="email"
-          placeholder="Adres e-mail"
-          isError={!!errors.email}
+          name="email"
+          error={errors.email}
+          placeholder={t('common.forgot_password_page.form.email')}
         />
 
-        <S.Button type="submit">Wyślij email</S.Button>
+        <S.Button type="submit">
+          {t('common.forgot_password_page.ui.button')}
+        </S.Button>
       </S.Form>
     </S.Wrapper>
   );

@@ -11,7 +11,7 @@ const Header = () => {
   const [isHidden, setHiden] = useState(false);
   const [isPolish, setPolish] = useState(false);
   const { changeTheme, isDarkMode } = useTheme();
-  const { i18n } = useTranslation(['addTravel', 'common']);
+  const { i18n } = useTranslation(['common']);
 
   useEffect(() => {
     isPolish ? i18n.changeLanguage('pl') : i18n.changeLanguage('en');
@@ -44,8 +44,8 @@ const Header = () => {
         currentValue={isPolish}
         onChange={changeLanguage}
         id="language"
-        onLabel="EN"
-        offLabel="PL"
+        onLabel="PL"
+        offLabel="EN"
       />
 
       <h1>WHIB</h1>

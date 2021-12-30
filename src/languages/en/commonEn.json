@@ -1,0 +1,82 @@
+{
+    "common": {
+        "yup": {
+            "email": "Please enter a valid email address ",
+            "required": "This field is required",
+            "password_not_match": "The passwords do not match"
+        },
+        "add_travel": {
+            "title": "Add travel",
+            "form": {
+                "name": "Name",
+                "longitude": "Longitude",
+                "latitude": "Latitude",
+                "description": "Description",
+                "button": "Add new travel"
+            },
+            "notification": {
+                "success": "A new place has been added!"
+            }
+        },
+        "login_page": {
+            "notification": {
+                "success": "Successfully logged in!",
+                "error": "Email or password incorrect!"
+            },
+            "ui": {
+                "title": "Login",
+                "button": "Log in",
+                "no_account": "You don't have your account yet? Register!",
+                "forget_password": "Forgot your password? "
+            },
+            "form": {
+                "email": "E-mail",
+                "password": "Password"
+            }
+        },
+        "register_page": {
+            "notification": {
+                "success": "The account has been created. ",
+                "error": "Something went wrong! Try again! "
+            },
+            "ui": {
+                "title": "Registration ",
+                "button": "Register",
+                "have_account":"Already have an account? Log in! "
+            },
+            "form": {
+                "username": "Username",
+                "email": "E-mail",
+                "password": "Password",
+                "confirm_password":"Confirm password"
+            }
+        },
+        "forgot_password_page": {
+            "notification": {
+                "success": "We've sent a message! Check your mailbox! ",
+                "error": "There is no account with this email!"
+            },
+            "ui": {
+                "title": "Password reminder",
+                "button": "Reset password"
+            },
+            "form": {
+                "email": "E-mail"
+            }
+        },
+        "reset_password_page": {
+            "notification": {
+                "success": "Password successfully reset! You can log in! ",
+                "error": "Something went wrong! Please try resending the reset message! "
+            },
+            "ui": {
+                "title": "Password reset",
+                "button": "Reset"
+            },
+            "form": {
+                "password": "Password",
+                "confirm_password": "Confirm password"
+            }
+        }
+    }
+}

@@ -1,0 +1,82 @@
+{
+    "common": {
+        "yup": {
+            "email": "Wprowadź poprawny adres e-email",
+            "required": "To pole jest wymagane",
+            "password_not_match": "Hasła nie są takie same"
+        },
+        "add_travel":{
+            "title": "Dodaj podróż",
+            "form": {
+                "name": "Nazwa miejsca",
+                "longitude": "Długość geo",
+                "latitude": "Szerokość geo",
+                "description": "Opis miejsca",
+                "button": "Dodaj nową podróż"
+            },
+            "notification": {
+                "success": "Nowe miejsce zostało dodane!"
+            }
+        },
+        "login_page": {
+            "notification": {
+                "success": "Pomyślnie zalogowano!",
+                "error": "Email lub hasło nieprawidłowe!"
+            },
+            "ui": {
+                "title": "Logowanie",
+                "button": "Zaloguj się",
+                "no_account": "Nie posiadasz jeszcze swojego konta? Załóż je!",
+                "forget_password": "Nie pamiętasz hasła?"
+            },
+            "form": {
+                "email": "Adres e-mail",
+                "password": "Hasło"
+            }
+        },
+        "register_page": {
+            "notification": {
+                "success": "Konto zostało stworzone!",
+                "error": "Coś poszło nie tak! Spróbuj ponownie!"
+            },
+            "ui": {
+                "title": "Rejestracja",
+                "button": "Zarejestruj się",
+                "have_account":"Posiadasz już konto? Zaloguj się!"
+            },
+            "form": {
+                "username": "Nazwa użytkownika",
+                "email": "Adres e-mail",
+                "password": "Hasło",
+                "confirm_password":"Potwierdź hasło"
+            }
+        },
+        "forgot_password_page": {
+            "notification": {
+                "success": "Wysłaliśmy wiadomość! Sprawdz swoją skrzynkę pocztową!",
+                "error": "Nie istnieje konto o podanym emailu!"
+            },
+            "ui": {
+                "title": "Przypominanie hasła",
+                "button": "Zresetuj hasło"
+            },
+            "form": {
+                "email": "Adres e-mail"
+            }
+        },
+        "reset_password_page": {
+            "notification": {
+                "success": "Hasło zresetowane pomyślnie! Można się zalogować!",
+                "error": "Coś poszło nie tak! Spróbuj ponownie wysłać wiadomość resetującą!"
+            },
+            "ui": {
+                "title": "Resetowanie hasła",
+                "button": "Zresetuj hasło"
+            },
+            "form": {
+                "password": "Hasło",
+                "confirm_password": "Potwierdz hasło"
+            }
+        }
+    }
+}

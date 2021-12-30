@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Link, Redirect } from 'react-router-dom';
 import { routes } from 'constants/routes';
 import useAuth from 'utils/hooks/useAuth';
 import AuthAPI from 'services/api';
+import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
+import { FormInput } from 'components/shared';
 import * as S from './styles';
 import { validationSchema } from './schema';
 
@@ -16,6 +19,7 @@ interface IFormInput {
 }
 
 const RegisterForm = (): JSX.Element => {
+  const { t } = useTranslation('common');
   const {
     register,
     handleSubmit,
@@ -24,6 +28,7 @@ const RegisterForm = (): JSX.Element => {
     resolver: yupResolver(validationSchema),
   });
   const { isAuthenticated, signUpCtx } = useAuth();
+  const [accCreated, setAccCreated] = useState(false);
 
   const onSubmit: SubmitHandler<IFormInput> = ({
     username,
@@ -32,48 +37,65 @@ const RegisterForm = (): JSX.Element => {
     confirmPassword,
   }) => {
     AuthAPI.register(username, email, password, confirmPassword)
-      .then(() => signUpCtx())
-      .catch((err) => console.log(err));
+      .then(() => {
+        signUpCtx();
+        setAccCreated(true);
+        toast.success(t('common.register_page.notification.success'));
+      })
+      .catch(() => toast.error(t('common.register_page.notification.error')));
   };
 
   if (isAuthenticated) {
     return <Redirect to={routes.home} />;
   }
 
+  if (accCreated) {
+    return <Redirect to={routes.login} />;
+  }
+
   return (
     <S.Section>
       <S.Form onSubmit={handleSubmit(onSubmit)}>
-        <h1>Rejestracja</h1>
+        <h1>{t('common.register_page.ui.title')}</h1>
 
-        <S.Input
-          {...register('username')}
+        <FormInput
+          register={register}
+          name="username"
           type="text"
-          placeholder="Nazwa użytkownika"
-          isError={!!errors.username}
-        />
-        <S.Input
-          {...register('email')}
-          type="email"
-          placeholder="Adres e-mail"
-          isError={!!errors.email}
-        />
-        <S.Input
-          {...register('password')}
-          type="password"
-          placeholder="Hasło"
-          isError={!!errors.password}
-        />
-        <S.Input
-          {...register('confirmPassword')}
-          type="password"
-          placeholder="Potwierdź hasło"
-          isError={!!errors.confirmPassword}
+          error={errors.username}
+          placeholder={t('common.register_page.form.username')}
         />
 
-        <S.Button type="submit">Zarejestruj</S.Button>
+        <FormInput
+          register={register}
+          name="email"
+          type="email"
+          error={errors.email}
+          placeholder={t('common.register_page.form.email')}
+        />
+
+        <FormInput
+          register={register}
+          name="password"
+          type="password"
+          error={errors.password}
+          placeholder={t('common.register_page.form.password')}
+        />
+
+        <FormInput
+          register={register}
+          name="confirmPassword"
+          type="password"
+          error={errors.confirmPassword}
+          placeholder={t('common.register_page.form.confirm_password')}
+        />
+
+        {console.log(errors.confirmPassword)}
+
+        <S.Button type="submit">{t('common.register_page.ui.button')}</S.Button>
 
         <Link to={routes.login}>
-          Posiadasz już konto użytkownika? Zaloguj się!
+          {t('common.register_page.ui.have_account')}
         </Link>
       </S.Form>
     </S.Section>
