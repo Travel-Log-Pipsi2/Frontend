@@ -3,7 +3,24 @@
         "yup": {
             "email": "Please enter a valid email address ",
             "required": "This field is required",
-            "password_not_match": "The passwords do not match"
+            "password_not_match": "The passwords do not match",
+            "longitude": "Valid value is -180 to 180 with a maximum of 6 decimals",
+            "latitude": "Valid value is -90 to 90 with a maximum of 6 decimals"
+        
+        },
+        "header": {
+            "navigation": {
+                "add": "New",
+                "profile": "Profile",
+                "friends": "Friends"
+            }
+        },
+        "map": {
+            "markers": {
+                "add_new": {
+                    "button": "Set point"
+                }
+            }
         },
         "add_travel": {
             "title": "Add travel",
@@ -12,7 +29,10 @@
                 "longitude": "Longitude",
                 "latitude": "Latitude",
                 "description": "Description",
-                "button": "Add new travel"
+                "button": "Add new travel",
+                "start_date": "Start date",
+                "end_date": "End date",
+                "country": "Country"
             },
             "notification": {
                 "success": "A new place has been added!"

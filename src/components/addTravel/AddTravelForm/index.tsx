@@ -1,17 +1,24 @@
+/* eslint-disable no-unused-expressions */
 import { yupResolver } from '@hookform/resolvers/yup';
 import AddTravelContext from 'context/addTravel';
 import { useContext, useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
-import * as S from './styles';
+import { FormInput } from 'components/shared';
+import DateInput from 'components/shared/DateInput';
 import { validationSchema } from './schema';
+import * as S from './styles';
+import 'react-datepicker/dist/react-datepicker.css';
 
 interface IFormInput {
   name: string;
+  country: string;
   longitude: number;
   latitude: number;
-  description: string;
+  desc: string;
+  startDate: Date;
+  endDate: Date;
 }
 
 const AddTravelForm = (): JSX.Element => {
@@ -22,17 +29,26 @@ const AddTravelForm = (): JSX.Element => {
     register,
     handleSubmit,
     reset,
+    control,
     formState: { errors },
   } = useForm<IFormInput>({
     resolver: yupResolver(validationSchema),
   });
 
   useEffect(() => {
-    reset(geoData);
+    geoData &&
+      reset({
+        name: geoData.text,
+        longitude: geoData.longitude,
+        latitude: geoData.latitude,
+        country: geoData.name.split(', ').slice(-1)[0],
+        desc: '',
+      });
   }, [geoData]);
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
     toast.success(t('common.add_travel.notification.success'));
+    console.log(data);
     reset({});
   };
 
@@ -40,29 +56,53 @@ const AddTravelForm = (): JSX.Element => {
     <S.Wrapper>
       <h2>{t('common.add_travel.title')}</h2>
       <S.Form onSubmit={handleSubmit(onSubmit)}>
-        <S.Input
-          {...register('name')}
+        <FormInput
+          register={register}
+          name="name"
           type="text"
+          error={errors.name}
           placeholder={t('common.add_travel.form.name')}
-          isError={!!errors.name}
         />
-        <S.Input
-          {...register('longitude')}
+        <FormInput
+          register={register}
+          name="country"
           type="text"
+          error={errors.country}
+          placeholder={t('common.add_travel.form.country')}
+        />
+        <FormInput
+          register={register}
+          name="longitude"
+          type="text"
+          error={errors.longitude}
           placeholder={t('common.add_travel.form.longitude')}
-          isError={!!errors.longitude}
         />
-        <S.Input
-          {...register('latitude')}
+        <FormInput
+          register={register}
+          name="latitude"
           type="text"
+          error={errors.latitude}
           placeholder={t('common.add_travel.form.latitude')}
-          isError={!!errors.latitude}
         />
-        {console.log(errors)}
+
+        <DateInput
+          control={control}
+          name="startDate"
+          error={errors.startDate}
+          placeholder={t('common.add_travel.form.start_date')}
+        />
+        <DateInput
+          control={control}
+          name="endDate"
+          error={errors.endDate}
+          placeholder={t('common.add_travel.form.end_date')}
+        />
+
         <S.Textarea
-          {...register('description')}
+          {...register('desc')}
           placeholder={t('common.add_travel.form.description')}
         />
+
         <S.Button type="submit">{t('common.add_travel.form.button')}</S.Button>
       </S.Form>
     </S.Wrapper>

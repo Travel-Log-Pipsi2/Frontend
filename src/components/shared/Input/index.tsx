@@ -18,6 +18,7 @@ export const StyledInput = styled.input<{ isError: boolean }>`
 
 const ErrorMessage = styled.p`
   color: red;
+  font-size: 12px;
 `;
 
 export const StyledTextarea = styled.textarea`

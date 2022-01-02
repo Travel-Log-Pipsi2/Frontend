@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Header = styled.header<{ isHidden: boolean }>`
-  background-color: ${({ theme }) => theme.colors.black};
+  background-color: ${({ theme }) => theme.colors.white};
   width: 100%;
   height: 48px;
   padding-inline: 16px;
@@ -16,6 +16,8 @@ const Header = styled.header<{ isHidden: boolean }>`
   gap: 8px;
   z-index: 10;
 
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     label {
       order: 2;
@@ -27,7 +29,7 @@ const Header = styled.header<{ isHidden: boolean }>`
   }
 
   h1 {
-    color: ${({ theme }) => theme.colors.white};
+    color: ${({ theme }) => theme.colors.black};
     width: max-content;
     position: absolute;
     top: 0;

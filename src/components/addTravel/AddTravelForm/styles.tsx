@@ -1,8 +1,4 @@
-import {
-  StyledInput,
-  StyledPrimaryButton,
-  StyledTextarea,
-} from 'components/shared';
+import { StyledPrimaryButton, StyledTextarea } from 'components/shared';
 import styled from 'styled-components';
 
 const Form = styled.form`
@@ -11,14 +7,12 @@ const Form = styled.form`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
-`;
 
-const Input = styled(StyledInput)<{ isError: boolean }>`
-  border: 1px solid
-    ${({ theme, isError }) => (isError ? 'red' : theme.colors.black)};
-
-  &:first-child {
-    grid-column: 1/3;
+  > * {
+    &:first-child,
+    &:nth-child(2) {
+      grid-column: 1/3;
+    }
   }
 `;
 
@@ -42,4 +36,4 @@ const Wrapper = styled.div`
   }
 `;
 
-export { Form, Input, Button, Textarea, Wrapper };
+export { Form, Button, Textarea, Wrapper };

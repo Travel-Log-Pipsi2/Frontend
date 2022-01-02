@@ -3,16 +3,35 @@
         "yup": {
             "email": "Wprowadź poprawny adres e-email",
             "required": "To pole jest wymagane",
-            "password_not_match": "Hasła nie są takie same"
+            "password_not_match": "Hasła nie są takie same",
+            "longitude": "Poprawna wartość -180 do 180 i maksymalnie 6 miejsc po przecinku",
+            "latitude": "Poprawna wartość -90 do 90 i maksymalnie 6 miejsc po przecinku"
+        },
+        "header": {
+            "navigation": {
+                "add": "Dodaj",
+                "profile": "Profil",
+                "friends": "Znajomi"
+            }
+        },
+        "map": {
+            "markers": {
+                "add_new": {
+                    "button": "Ustaw punkt"
+                }
+            }
         },
         "add_travel":{
             "title": "Dodaj podróż",
             "form": {
                 "name": "Nazwa miejsca",
-                "longitude": "Długość geo",
-                "latitude": "Szerokość geo",
+                "longitude": "Długość geograficzna",
+                "latitude": "Szerokość geograficzna",
                 "description": "Opis miejsca",
-                "button": "Dodaj nową podróż"
+                "button": "Dodaj nową podróż",
+                "start_date": "Początek podróży",
+                "end_date": "Koniec podróży",
+                "country": "Państwo"
             },
             "notification": {
                 "success": "Nowe miejsce zostało dodane!"

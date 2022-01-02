@@ -7,7 +7,7 @@ const Span = styled.span`
   left: 0;
   bottom: 0;
   right: 0;
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: #fff;
   border-radius: 16px;
 
   display: flex;
@@ -19,7 +19,7 @@ const Span = styled.span`
     content: '';
     width: 20px;
     height: 20px;
-    background-color: ${({ theme }) => theme.colors.black};
+    background-color: #353535;
     top: 2px;
     left: 2px;
     border-radius: 12px;

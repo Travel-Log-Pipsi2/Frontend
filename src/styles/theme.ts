@@ -33,8 +33,8 @@ const theme: ITheme = {
 
 const themeDark: ITheme = {
   colors: {
-    black: 'red',
-    white: '#F3F3F4',
+    black: '#F3F3F4',
+    white: '#353535',
     primary: {
       100: '#b9aeee',
       300: '#8f7de4',

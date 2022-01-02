@@ -1,6 +1,7 @@
 import { routes } from 'constants/routes';
 import AddTravelContext from 'context/addTravel';
 import { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
 import * as S from './styles';
 
@@ -9,6 +10,7 @@ interface Props {
     latitude: number;
     longitude: number;
     name: string;
+    text: string;
   };
   closePopup: () => void;
 }
@@ -16,6 +18,7 @@ interface Props {
 const NotPlacedPopup = ({ marker, closePopup }: Props) => {
   const history = useHistory();
   const { initAdd } = useContext(AddTravelContext);
+  const { t } = useTranslation('common');
 
   const handleClick = () => {
     closePopup();
@@ -23,6 +26,7 @@ const NotPlacedPopup = ({ marker, closePopup }: Props) => {
       name: marker.name,
       latitude: marker.latitude,
       longitude: marker.longitude,
+      text: marker.text,
     });
     history.push(routes.addTravel);
   };
@@ -37,9 +41,10 @@ const NotPlacedPopup = ({ marker, closePopup }: Props) => {
       offsetTop={0}
       offsetLeft={20}
     >
-      <p>{marker.name}</p>
+      <h3>{marker.text}</h3>
+      <h4>{marker.name.split(', ').slice(-1)[0]}</h4>
       <S.Button type="button" onClick={handleClick}>
-        Dodaj lokację
+        {t('common.map.markers.add_new.button')}
       </S.Button>
     </S.StyledPopup>
   );

@@ -17,9 +17,10 @@ interface IAuthContextType {
 
 interface IAddTravelContextType {
   geoData: {
-    longitute: number;
+    longitude: number;
     latitude: number;
     name: string;
+    text?: string;
   };
   initAdd: (point: unknown) => void;
 }
@@ -30,4 +31,24 @@ interface IThemeContext {
   changeTheme: () => void;
 }
 
-export { IUser, IAuthContextType, IAddTravelContextType, IThemeContext };
+interface ITravel {
+  desc?: string;
+  startDate: Date;
+  endDate: Date;
+}
+
+interface IPlace {
+  longitude: number;
+  latitude: number;
+  name: string;
+  travels: ITravel[];
+}
+
+export {
+  IUser,
+  IAuthContextType,
+  IAddTravelContextType,
+  IThemeContext,
+  ITravel,
+  IPlace,
+};

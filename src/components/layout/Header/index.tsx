@@ -3,6 +3,7 @@ import { useScrollPosition } from '@n8tb1t/use-scroll-position';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import useTheme from 'utils/hooks/useTheme';
+import Cookies from 'js-cookie';
 import Switch from '../../shared/Switch';
 import Navigation from './Navigation';
 import * as S from './styles';
@@ -14,7 +15,17 @@ const Header = () => {
   const { i18n } = useTranslation(['common']);
 
   useEffect(() => {
-    isPolish ? i18n.changeLanguage('pl') : i18n.changeLanguage('en');
+    Cookies.get('lang') === 'pl' ? setPolish(true) : setPolish(false);
+  }, []);
+
+  useEffect(() => {
+    if (isPolish) {
+      i18n.changeLanguage('pl');
+      Cookies.set('lang', 'pl');
+    } else {
+      i18n.changeLanguage('en');
+      Cookies.set('lang', 'en');
+    }
   }, [isPolish, i18n]);
 
   useScrollPosition(

@@ -8,11 +8,20 @@ const MapWrapper = styled.div`
 const SearchIcon = styled.div`
   width: 40px;
   aspect-ratio: 1;
-  background-color: ${({ theme }) => theme.colors.white};
-  border: 1px solid ${({ theme }) => theme.colors.black};
+  background-color: #f3f3f4;
+  border: 1px solid #353535;
   border-radius: 50%;
   cursor: pointer;
   z-index: 2;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  > svg {
+    width: 20px;
+    height: 20px;
+  }
 `;
 
 const GeocoderWrapper = styled.div<{ isActive: boolean }>`
@@ -43,7 +52,7 @@ const GeocoderWrapper = styled.div<{ isActive: boolean }>`
 
     .react-geocoder-results {
       border: 1px solid ${({ theme }) => theme.colors.black};
-      background-color: ${({ theme }) => theme.colors.white};
+      background-color: #f3f3f4;
       border-radius: 8px;
       position: absolute;
       top: 95%;
@@ -51,6 +60,7 @@ const GeocoderWrapper = styled.div<{ isActive: boolean }>`
       padding-block: 6px;
       padding-inline: 12px;
       overflow: scroll;
+      overflow-x: hidden;
       max-height: 300px;
     }
 
