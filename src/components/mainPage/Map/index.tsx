@@ -4,6 +4,7 @@ import Geocoder from 'react-mapbox-gl-geocoder';
 import useTheme from 'utils/hooks/useTheme';
 import SearchSVG from 'static/icons/search';
 import useWindowDimensions from 'utils/hooks/useWindowDimension';
+import useAuth from 'utils/hooks/useAuth';
 import * as S from './styles';
 import NotPlacedPopup from './Popup/NotPlacedPopup';
 import UserMarkers from './UserMarkers';
@@ -101,8 +102,9 @@ const Map = (): JSX.Element => {
     zoom: 3,
   });
   const mapRef = useRef();
+  const { user } = useAuth();
   const { isDarkMode } = useTheme();
-  const [userMarkers, setUserMarkers] = useState(dummyData);
+  const [userMarkers, setUserMarkers] = useState(user.places);
   const { width } = useWindowDimensions();
 
   useEffect(() => {

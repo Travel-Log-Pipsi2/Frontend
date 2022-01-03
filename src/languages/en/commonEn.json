@@ -12,7 +12,8 @@
             "navigation": {
                 "add": "New",
                 "profile": "Profile",
-                "friends": "Friends"
+                "friends": "Friends",
+                "travels": "Travels"
             }
         },
         "map": {
@@ -96,6 +97,11 @@
             "form": {
                 "password": "Password",
                 "confirm_password": "Confirm password"
+            }
+        },
+        "travels": {
+            "ui": {
+                "title": "Travels"
             }
         }
     }

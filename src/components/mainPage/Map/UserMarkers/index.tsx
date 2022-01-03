@@ -1,21 +1,12 @@
 import { useState } from 'react';
 import { IPlace } from 'types/types';
+import getFullDate from 'utils/functions/getFullDate';
 import CustomMarker from '../CustomMarker';
 import PlacedPopup from '../Popup/PlacedPopup';
 
 interface UserMarkersProps {
   markers: IPlace[];
 }
-
-const getFullDate = (date: Date): string => {
-  const day = date.getDate();
-  const month = date.getMonth() + 1;
-  const year = date.getFullYear();
-
-  return `${day < 10 ? `0${day}` : day}.${
-    month < 10 ? `0${month}` : month
-  }.${year}`;
-};
 
 const UserMarkers = ({ markers }: UserMarkersProps): JSX.Element => {
   const [openMarker, setOpenMarker] = useState(null);

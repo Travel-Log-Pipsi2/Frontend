@@ -6,4 +6,7 @@ export const routes = {
   forgotPass: '/forgot-pass',
   resetPass: '/reset-pass',
   addTravel: '/add-travel',
+  travels: '/travels',
+  profile: '/profile',
+  friends: '/friends',
 };

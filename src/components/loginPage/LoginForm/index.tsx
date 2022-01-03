@@ -29,8 +29,9 @@ const LoginForm = (): JSX.Element => {
 
   const onSubmit: SubmitHandler<FormData> = ({ email, password }) => {
     AuthAPI.login(email, password)
-      .then(() => {
+      .then((data) => {
         loginCtx();
+        console.log(data);
         toast.success(t('common.login_page.notification.success'));
       })
       .catch(() => toast.error(t('common.login_page.notification.error')));

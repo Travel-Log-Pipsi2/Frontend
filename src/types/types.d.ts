@@ -3,6 +3,7 @@ import { ITheme } from 'styles/styled';
 interface IUser {
   email: string;
   name: string;
+  places: IPlace[];
 }
 
 interface IAuthContextType {
@@ -41,6 +42,7 @@ interface IPlace {
   longitude: number;
   latitude: number;
   name: string;
+  country: string;
   travels: ITravel[];
 }
 

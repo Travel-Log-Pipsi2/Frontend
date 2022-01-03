@@ -3,6 +3,7 @@ import { routes } from 'constants/routes';
 import { Route, Switch } from 'react-router-dom';
 import styled from 'styled-components';
 import AddTravel from './Main/AddTravel';
+import Travels from './Main/Travels';
 
 const SectionStyled = styled.section`
   @media (min-width: ${(props) => props.theme.breakpoints.desktop}) {
@@ -35,6 +36,7 @@ const MainPage = (): JSX.Element => {
       <div className="control-wrapper">
         <Switch>
           <Route exact path={routes.addTravel} component={AddTravel} />
+          <Route exact path={routes.travels} component={Travels} />
         </Switch>
       </div>
     </SectionStyled>

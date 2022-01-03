@@ -5,10 +5,10 @@ class AuthService {
   readonly baseUrl: string;
 
   constructor() {
-    this.baseUrl = 'https://localhost:58744/api';
+    this.baseUrl = 'https://localhost:63696/api';
 
     axios
-      .get('https://localhost:58744/api/Test')
+      .get('https://localhost:63696/api/Test')
       .then(() => console.log('Connection established'))
       .catch((err) => console.log(err));
   }

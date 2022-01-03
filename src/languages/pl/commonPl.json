@@ -11,7 +11,8 @@
             "navigation": {
                 "add": "Dodaj",
                 "profile": "Profil",
-                "friends": "Znajomi"
+                "friends": "Znajomi",
+                "travels": "Podróże"
             }
         },
         "map": {
@@ -95,6 +96,11 @@
             "form": {
                 "password": "Hasło",
                 "confirm_password": "Potwierdz hasło"
+            }
+        },
+        "travels": {
+            "ui": {
+                "title": "Podróże"
             }
         }
     }
