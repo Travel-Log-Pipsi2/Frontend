@@ -15,6 +15,10 @@ const Places = styled.div`
   display: flex;
   flex-direction: column;
 
+  border-radius: 8px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.25);
+  padding: 12px;
+
   > h3 {
     font-size: 1.5rem;
     font-weight: 400;

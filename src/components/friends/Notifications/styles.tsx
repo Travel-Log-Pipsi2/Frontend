@@ -5,6 +5,7 @@ const Wrapper = styled.div`
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
   padding: 12px;
+  margin-top: 32px;
 
   h3 {
     font-size: 1.25rem;

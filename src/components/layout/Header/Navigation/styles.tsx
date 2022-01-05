@@ -27,6 +27,10 @@ const Nav = styled.nav<{ isHidden: boolean }>`
     width: 100%;
     height: 100%;
 
+    @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+      width: 300px;
+    }
+
     li {
       width: 52px;
       height: 60px;

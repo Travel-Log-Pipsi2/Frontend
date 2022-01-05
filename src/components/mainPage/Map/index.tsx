@@ -10,84 +10,6 @@ import NotPlacedPopup from './Popup/NotPlacedPopup';
 import UserMarkers from './UserMarkers';
 import CustomMarker from './CustomMarker';
 
-const dummyData = [
-  {
-    longitude: 21,
-    latitude: 50,
-    name: 'Test A',
-    travels: [
-      {
-        desc: 'lorem ipsum',
-        startDate: new Date(),
-        endDate: new Date(),
-      },
-    ],
-  },
-  {
-    longitude: 22,
-    latitude: 51,
-    name: 'Test B',
-    travels: [
-      {
-        desc: 'lorem ipsum',
-        startDate: new Date(),
-        endDate: new Date(),
-      },
-      {
-        desc: 'lorem ipsum',
-        startDate: new Date(),
-        endDate: new Date(),
-      },
-      {
-        desc: 'lorem ipsum',
-        startDate: new Date(),
-        endDate: new Date(),
-      },
-    ],
-  },
-  {
-    longitude: 23,
-    latitude: 49,
-    name: 'Test C',
-    travels: [
-      {
-        desc: 'lorem ipsum',
-        startDate: new Date(),
-        endDate: new Date(),
-      },
-    ],
-  },
-  {
-    longitude: 21,
-    latitude: 52,
-    name: 'Test D',
-    travels: [
-      {
-        desc: 'lorem ipsum',
-        startDate: new Date(),
-        endDate: new Date(),
-      },
-    ],
-  },
-  {
-    longitude: 20,
-    latitude: 50,
-    name: 'Test E',
-    travels: [
-      {
-        desc: 'lorem ipsum',
-        startDate: new Date(),
-        endDate: new Date(),
-      },
-      {
-        desc: 'lorem ipsum',
-        startDate: new Date(),
-        endDate: new Date(),
-      },
-    ],
-  },
-];
-
 const Map = (): JSX.Element => {
   const [searchActive, setSearchActive] = useState(false);
   const [tempMarker, setTempMarker] = useState(null);
@@ -102,10 +24,13 @@ const Map = (): JSX.Element => {
     zoom: 3,
   });
   const mapRef = useRef();
-  const { user } = useAuth();
+  const { user, isAuthenticated } = useAuth();
   const { isDarkMode } = useTheme();
-  const [userMarkers, setUserMarkers] = useState(user.places);
+  const [userMarkers, setUserMarkers] = useState([]);
   const { width } = useWindowDimensions();
+
+  console.log('CASE', user);
+  console.log('IS AUTH', isAuthenticated);
 
   useEffect(() => {
     if (width >= 1024) {
@@ -114,6 +39,10 @@ const Map = (): JSX.Element => {
       setMapSettings({ width: '100%', height: '400px' });
     }
   }, [width]);
+
+  useEffect(() => {
+    if (isAuthenticated) setUserMarkers(user.places);
+  }, [isAuthenticated, user]);
 
   const handleViewportChange = useCallback((newViewport) => {
     setViewport(newViewport);

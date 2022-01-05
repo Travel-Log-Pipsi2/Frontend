@@ -93,13 +93,23 @@ const dummyNotification = [
   { sender: 'Oklahoma', notification: false, done: true },
 ];
 
+const dummyStatistics = {
+  allPlaces: 0,
+  allTravels: 0,
+  allCountries: 0,
+  allDaysInTravel: 0,
+  mostVisitedCountry: 'Poland',
+  currYearCountries: 0,
+  currYearTravels: 0,
+};
+
 export function AuhtProvider({
   children,
 }: {
   children: ReactNode;
 }): JSX.Element {
   const [isAuthenticated, setAuthenticated] = useState<boolean>(false);
-  const [user, setUser] = useState<IUser>();
+  const [user, setUser] = useState<IUser>(null);
   const [error, setError] = useState<any>();
   const [loading, setLoading] = useState<boolean>(false);
   const [loadingInitial, setLoadingInitial] = useState<boolean>(true);
@@ -114,6 +124,7 @@ export function AuhtProvider({
         name: 'Testowy',
         places: dummyData,
         notifications: dummyNotification,
+        statistics: dummyStatistics,
       });
       setAuthenticated(true);
     }
@@ -125,6 +136,13 @@ export function AuhtProvider({
   }, [location.pathname]);
 
   const loginCtx = () => {
+    setUser({
+      email: 'test@test.pl',
+      name: 'Testowy',
+      places: dummyData,
+      notifications: dummyNotification,
+      statistics: dummyStatistics,
+    });
     setAuthenticated(true);
   };
 

@@ -4,9 +4,15 @@ import { Route, Switch } from 'react-router-dom';
 import styled from 'styled-components';
 import AddTravel from './Main/AddTravel';
 import Friends from './Main/Friends';
+import Profile from './Main/Profile';
 import Travels from './Main/Travels';
 
 const SectionStyled = styled.section`
+  h2 {
+    color: ${(props) => props.theme.colors.black};
+    text-align: center;
+  }
+
   @media (min-width: ${(props) => props.theme.breakpoints.desktop}) {
     display: flex;
     flex-direction: row-reverse;
@@ -34,21 +40,18 @@ const SectionStyled = styled.section`
   }
 `;
 
-const MainPage = (): JSX.Element => {
-  console.log('ASD');
-
-  return (
-    <SectionStyled>
-      <Map />
-      <div className="control-wrapper">
-        <Switch>
-          <Route exact path={routes.addTravel} component={AddTravel} />
-          <Route exact path={routes.travels} component={Travels} />
-          <Route exact path={routes.friends} component={Friends} />
-        </Switch>
-      </div>
-    </SectionStyled>
-  );
-};
+const MainPage = (): JSX.Element => (
+  <SectionStyled>
+    <Map />
+    <div className="control-wrapper">
+      <Switch>
+        <Route exact path={routes.addTravel} component={AddTravel} />
+        <Route exact path={routes.travels} component={Travels} />
+        <Route exact path={routes.friends} component={Friends} />
+        <Route exact path={routes.profile} component={Profile} />
+      </Switch>
+    </div>
+  </SectionStyled>
+);
 
 export default MainPage;

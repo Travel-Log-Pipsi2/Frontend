@@ -1,4 +1,5 @@
 import { Notifications } from 'components/friends';
+import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 
 const SectionWrapper = styled.section`
@@ -8,11 +9,15 @@ const SectionWrapper = styled.section`
   }
 `;
 
-const Friends = () => (
-  <SectionWrapper>
-    <h2>Friends</h2>
-    <Notifications />
-  </SectionWrapper>
-);
+const Friends = () => {
+  const { t } = useTranslation('common');
+
+  return (
+    <SectionWrapper>
+      <h2>{t('common.friends_page.ui.title')}</h2>
+      <Notifications />
+    </SectionWrapper>
+  );
+};
 
 export default Friends;

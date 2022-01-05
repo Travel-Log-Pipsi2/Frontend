@@ -6,6 +6,9 @@ interface IUser {
   name: string;
   places: IPlace[];
   notifications: INotification[];
+  statistics: {
+    [key: string]: string | number;
+  };
 }
 
 interface IAuthContextType {

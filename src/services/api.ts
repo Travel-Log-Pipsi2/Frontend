@@ -5,10 +5,10 @@ class AuthService {
   readonly baseUrl: string;
 
   constructor() {
-    this.baseUrl = 'https://localhost:63898/api';
+    this.baseUrl = 'https://localhost:59299/api';
 
     axios
-      .get('https://localhost:63898/api/Test')
+      .get('https://localhost:59299/api/Test')
       .then(() => console.log('Connection established'))
       .catch((err) => console.log(err));
   }
@@ -83,6 +83,13 @@ class AuthService {
         return Promise.reject(data);
       })
       .catch((error) => Promise.reject(error));
+
+  loginWithSocial = (provider: 'Facebook' | 'Instagram') =>
+    axios.get(`${this.baseUrl}/ExternalAuthenticate/External-login`, {
+      params: {
+        provider,
+      },
+    });
 }
 
 const AuthAPI = new AuthService();

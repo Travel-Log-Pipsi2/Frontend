@@ -5,6 +5,9 @@ const Form = styled.form`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
+  border-radius: 8px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.25);
+  padding: 12px;
 
   > * {
     &:first-child,

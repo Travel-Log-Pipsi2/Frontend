@@ -37,6 +37,12 @@ const LoginForm = (): JSX.Element => {
       .catch(() => toast.error(t('common.login_page.notification.error')));
   };
 
+  const handleSocialButton = (provider: 'Facebook' | 'Instagram') => {
+    AuthAPI.loginWithSocial(provider)
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err));
+  };
+
   if (isAuthenticated) {
     return <Redirect to={routes.home} />;
   }
@@ -61,7 +67,16 @@ const LoginForm = (): JSX.Element => {
           error={errors.password}
           placeholder={t('common.login_page.form.password')}
         />
+
         <S.Button type="submit">{t('common.login_page.ui.button')}</S.Button>
+
+        <S.Button type="button" onClick={() => handleSocialButton('Facebook')}>
+          Facebook
+        </S.Button>
+
+        <S.Button type="button" onClick={() => handleSocialButton('Instagram')}>
+          Instagram
+        </S.Button>
 
         <Link to={routes.register}>{t('common.login_page.ui.no_account')}</Link>
 

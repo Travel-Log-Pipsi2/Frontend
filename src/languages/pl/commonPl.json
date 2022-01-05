@@ -100,7 +100,30 @@
         },
         "travels": {
             "ui": {
-                "title": "Podróże"
+                "title": "Podróże",
+                "button_delete": "Usuń"
+            }
+        },
+        "friends_page": {
+            "ui": {
+                "title": "Znajomi",
+                "title_request":"Zaproszenia",
+                "accept_request": "Akcpetuj",
+                "decline_request": "Odrzuć"
+            }
+        },
+        "profile_page": {
+            "ui": {
+                "title": "Profil",
+                "stats": {
+                    "all_places": "Odwiedzone miejsca",
+                    "all_travels": "Odbyte podróże",
+                    "all_countries": "Odwiedzone państwa",
+                    "add_days_in_travel": "Dni w podróży",
+                    "most_visited_country": "Ulubione państwo",
+                    "curr_year_countries": "Państwa w tym roku",
+                    "curr_year_travels": "Podróże w tym roku"
+                }
             }
         }
     }

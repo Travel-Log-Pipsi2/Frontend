@@ -101,7 +101,31 @@
         },
         "travels": {
             "ui": {
-                "title": "Travels"
+                "title": "Travels",
+                "button_delete": "Delete"
+
+            }
+        },
+        "friends_page": {
+            "ui": {
+                "title": "Friends",
+                "title_request":"Requests",
+                "accept_request": "Accept",
+                "decline_request": "Decline"
+            }
+        },
+        "profile_page": {
+            "ui": {
+                "title": "Profile",
+                "stats": {
+                    "all_places": "Places visited",
+                    "all_travels": "Travels made",
+                    "all_countries": "Countries visited",
+                    "add_days_in_travel": "Travel days",
+                    "most_visited_country": "Favorite country",
+                    "curr_year_countries": "Countries this year",
+                    "curr_year_travels": "Travels this year"
+                }
             }
         }
     }

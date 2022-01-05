@@ -22,7 +22,9 @@ const TravelsList = (): JSX.Element => {
           <S.Travels>
             {travels.map(({ desc, endDate, startDate }) => (
               <S.Travel>
-                <button type="button">Usuń</button>
+                <button type="button">
+                  {t('common.travels.ui.button_delete')}
+                </button>
                 <span>
                   {`${getFullDate(startDate)} - ${getFullDate(endDate)}`}
                 </span>
