@@ -87,6 +87,12 @@ const dummyData = [
   },
 ];
 
+const dummyNotification = [
+  { sender: 'Shiragaira', notification: true, done: false },
+  { sender: 'Alabama', notification: false, done: false },
+  { sender: 'Oklahoma', notification: false, done: true },
+];
+
 export function AuhtProvider({
   children,
 }: {
@@ -107,6 +113,7 @@ export function AuhtProvider({
         email: 'test@test.pl',
         name: 'Testowy',
         places: dummyData,
+        notifications: dummyNotification,
       });
       setAuthenticated(true);
     }

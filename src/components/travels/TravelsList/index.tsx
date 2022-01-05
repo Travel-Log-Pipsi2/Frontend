@@ -6,12 +6,9 @@ import useAuth from 'utils/hooks/useAuth';
 import * as S from './styles';
 
 const TravelsList = (): JSX.Element => {
-  console.log('e');
   const { user } = useAuth();
   const { t } = useTranslation('common');
   const [places] = useState(user.places);
-
-  console.log(places);
 
   return (
     <S.Wrapper>

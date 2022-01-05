@@ -3,6 +3,10 @@ export interface ITheme {
     primary: ColorType | string;
     black: ColorType | string;
     white: ColorType | string;
+    grayLight: ColorType | string;
+    grayDark: ColorType | string;
+    pastelDanger: ColorType | string;
+    pastelSuccess: ColorType | string;
   };
   typography: {
     family: FontFamilyType;

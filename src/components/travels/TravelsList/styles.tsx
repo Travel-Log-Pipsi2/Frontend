@@ -1,14 +1,12 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  padding-inline: 24px;
   display: flex;
   flex-direction: column;
   gap: 24px;
 
   > h2 {
     text-align: center;
-    margin-block: 48px;
     color: ${(props) => props.theme.colors.black};
   }
 `;
@@ -60,7 +58,7 @@ const Travel = styled.li`
     right: 0;
     padding: 2px 4px;
     text-transform: uppercase;
-    background-color: hsl(0, 80%, 70%);
+    background-color: ${(props) => props.theme.colors.pastelDanger};
     font-size: 0.75rem;
     cursor: pointer;
   }

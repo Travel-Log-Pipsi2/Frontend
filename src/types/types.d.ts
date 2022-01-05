@@ -1,9 +1,11 @@
+import { stringify } from 'querystring';
 import { ITheme } from 'styles/styled';
 
 interface IUser {
   email: string;
   name: string;
   places: IPlace[];
+  notifications: INotification[];
 }
 
 interface IAuthContextType {
@@ -44,6 +46,12 @@ interface IPlace {
   name: string;
   country: string;
   travels: ITravel[];
+}
+
+interface INotification {
+  sender: stringify;
+  notification: boolean;
+  done: boolean;
 }
 
 export {

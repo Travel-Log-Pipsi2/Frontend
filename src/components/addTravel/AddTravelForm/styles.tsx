@@ -2,8 +2,6 @@ import { StyledPrimaryButton, StyledTextarea } from 'components/shared';
 import styled from 'styled-components';
 
 const Form = styled.form`
-  padding-inline: 24px;
-
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
@@ -26,13 +24,13 @@ const Button = styled(StyledPrimaryButton)`
 `;
 
 const Wrapper = styled.div`
-  margin-block: 48px;
   display: flex;
   flex-direction: column;
   gap: 36px;
 
   h2 {
     text-align: center;
+    color: ${(props) => props.theme.colors.black};
   }
 `;
 

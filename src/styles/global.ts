@@ -9,6 +9,8 @@ export const GlobalStyles = createGlobalStyle<{ theme: ITheme }>`
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    scrollbar-width: thin;
+    scrollbar-color: ${(props) => props.theme.colors.primary[300]} #2b2b2d;
 }
 
 html {
@@ -51,6 +53,8 @@ body {
     button {
         outline: none;
         border: none;
+    font-family: ${({ theme }) => theme.typography.family.main};
+
     }
 
     a {
