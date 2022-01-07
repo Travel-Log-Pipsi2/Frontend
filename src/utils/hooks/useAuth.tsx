@@ -114,7 +114,6 @@ export function AuhtProvider({
   const [loading, setLoading] = useState<boolean>(false);
   const [loadingInitial, setLoadingInitial] = useState<boolean>(true);
 
-  const history = useHistory();
   const location = useLocation();
 
   useEffect(() => {
@@ -136,6 +135,7 @@ export function AuhtProvider({
   }, [location.pathname]);
 
   const loginCtx = (data) => {
+    Cookies.set('token', data.content);
     setUser({
       email: 'test@test.pl',
       name: 'Testowy',
@@ -147,9 +147,9 @@ export function AuhtProvider({
   };
 
   const logoutCtx = () => {
+    Cookies.remove('token');
     setUser(null);
     setAuthenticated(false);
-    Cookies.remove('token');
   };
 
   const signUpCtx = () => {};

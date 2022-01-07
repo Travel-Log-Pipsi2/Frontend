@@ -42,7 +42,8 @@
         "login_page": {
             "notification": {
                 "success": "Successfully logged in!",
-                "error": "Email or password incorrect!"
+                "error": "Email or password incorrect!",
+                "not_active": "Account not activated!"
             },
             "ui": {
                 "title": "Login",

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Link, Redirect } from 'react-router-dom';
@@ -27,18 +27,12 @@ const RegisterForm = (): JSX.Element => {
   } = useForm<IFormInput>({
     resolver: yupResolver(validationSchema),
   });
-  const { isAuthenticated, signUpCtx } = useAuth();
+  const { isAuthenticated } = useAuth();
   const [accCreated, setAccCreated] = useState(false);
 
-  const onSubmit: SubmitHandler<IFormInput> = ({
-    username,
-    email,
-    password,
-    confirmPassword,
-  }) => {
-    AuthAPI.register(username, email, password, confirmPassword)
+  const onSubmit: SubmitHandler<IFormInput> = (values) => {
+    AuthAPI.register(values)
       .then(() => {
-        signUpCtx();
         setAccCreated(true);
         toast.success(t('common.register_page.notification.success'));
       })

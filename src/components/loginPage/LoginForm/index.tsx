@@ -9,7 +9,6 @@ import { toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
 import { FormInput } from 'components/shared';
 import FacebookLogin from 'react-facebook-login';
-import Cookies from 'js-cookie';
 import { validationSchema } from './schema';
 import * as S from './styles';
 
@@ -30,19 +29,22 @@ const LoginForm = (): JSX.Element => {
   });
   const { isAuthenticated, loginCtx } = useAuth();
 
-  const onSubmit: SubmitHandler<FormData> = ({ email, password }) => {
-    AuthAPI.login(email, password)
-      .then((data) => {
-        loginCtx(data);
-        toast.success(t('common.login_page.notification.success'));
+  const onSubmit: SubmitHandler<FormData> = (values) => {
+    AuthAPI.login(values)
+      .then(({ data }) => {
+        if (data.statusCode !== 200) {
+          toast.error(t('common.login_page.notification.not_active'));
+        } else {
+          toast.success(t('common.login_page.notification.success'));
+          loginCtx(data);
+        }
       })
       .catch(() => toast.error(t('common.login_page.notification.error')));
   };
 
   const responseFacebook = (fbResponse) => {
     AuthAPI.loginWithFacebook(fbResponse)
-      .then((data) => {
-        Cookies.set('token', data);
+      .then(({ data }) => {
         loginCtx(data);
         toast.success(t('common.login_page.notification.success'));
       })

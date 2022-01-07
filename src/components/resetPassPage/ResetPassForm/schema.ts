@@ -1,9 +1,9 @@
 import * as Yup from 'yup';
 
 const validationSchema = Yup.object({
-  password: Yup.string().required('common.yup.required'),
-  confirmPassword: Yup.string().oneOf(
-    [Yup.ref('password'), null],
+  newPassword: Yup.string().required('common.yup.required'),
+  confirmNewPassword: Yup.string().oneOf(
+    [Yup.ref('newPassword'), null],
     'common.yup.password_not_match'
   ),
 });

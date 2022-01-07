@@ -13,79 +13,26 @@ class AuthService {
       .catch((err) => console.log(err));
   }
 
-  login = (email: string, password: string) =>
-    axios
-      .post<any>(`${this.baseUrl}/Authenticate/Login`, {
-        email,
-        password,
-      })
-      .then(({ data }) => {
-        const { content, successStatus } = data;
-
-        if (successStatus) {
-          Cookies.set('token', content);
-          return Promise.resolve(data);
-        }
-
-        return Promise.reject(data);
-      })
-      .catch((error) => Promise.reject(error));
-
-  logout = () => {
-    Cookies.remove('token');
-  };
+  login = (data) => axios.post<any>(`${this.baseUrl}/Authenticate/Login`, data);
 
   forgotPassword = (email: string) =>
-    axios
-      .post<any>(`${this.baseUrl}/Authenticate/Forgot-password`, null, {
-        params: {
-          email,
-        },
-      })
-      .then(({ data }) => Promise.resolve(data))
-      .catch((error) => Promise.reject(error));
-
-  resetPassword = (
-    email: string,
-    newPassword: string,
-    confirmNewPassword: string,
-    token: string
-  ) =>
-    axios
-      .post<any>(`${this.baseUrl}/Authenticate/Reset-password`, {
+    axios.post<any>(`${this.baseUrl}/Authenticate/Forgot-password`, null, {
+      params: {
         email,
-        newPassword,
-        confirmNewPassword,
-        token,
-      })
-      .then(({ data }) => Promise.resolve(data))
-      .catch((error) => Promise.reject(error));
+      },
+    });
 
-  register = (
-    username: string,
-    email: string,
-    password: string,
-    confirmPassword: string
-  ) =>
-    axios
-      .post<any>(`${this.baseUrl}/Authenticate/Register`, {
-        username,
-        email,
-        password,
-        confirmPassword,
-      })
-      .then(({ data }) => {
-        const { successStatus } = data;
-        if (successStatus) {
-          return Promise.resolve(data);
-        }
+  resetPassword = (data) =>
+    axios.post<any>(`${this.baseUrl}/Authenticate/Reset-password`, data);
 
-        return Promise.reject(data);
-      })
-      .catch((error) => Promise.reject(error));
+  register = (data) =>
+    axios.post<any>(`${this.baseUrl}/Authenticate/Register`, data);
 
-  loginWithFacebook = (body) =>
-    axios.post(`${this.baseUrl}/ExternalAuthenticate/External-response`, body);
+  loginWithFacebook = (data) =>
+    axios.post<any>(
+      `${this.baseUrl}/ExternalAuthenticate/External-response`,
+      data
+    );
 }
 
 const AuthAPI = new AuthService();

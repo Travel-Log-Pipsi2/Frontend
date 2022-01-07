@@ -11,8 +11,8 @@ import * as S from './styles';
 import { validationSchema } from './schema';
 
 interface IFormInput {
-  password: string;
-  confirmPassword: string;
+  newPassword: string;
+  confirmNewPassword: string;
 }
 
 const ResetPassForm = (): JSX.Element => {
@@ -31,20 +31,17 @@ const ResetPassForm = (): JSX.Element => {
   const token = urlParams.get('Token');
   const email = urlParams.get('Email');
 
-  const onSubmit: SubmitHandler<IFormInput> = ({
-    password,
-    confirmPassword,
-  }) => {
-    AuthAPI.resetPassword(email, password, confirmPassword, token).then(
-      (data) => {
+  const onSubmit: SubmitHandler<IFormInput> = (values) => {
+    AuthAPI.resetPassword({ email, token, ...values })
+      .then(({ data }) => {
         if (data.statusCode === 200) {
-          toast.success('Hasło zresetowano pomyślnie. Możesz się zalogować.');
+          toast.success(t('common.reset_password_page.notification.success'));
           setResetSuccess(true);
         } else {
-          toast.error('Coś poszło nie tak, spróbuj ponownie zresetować hasło!');
+          toast.error(t('common.reset_password_page.notification.error'));
         }
-      }
-    );
+      })
+      .catch((err) => console.log(err.message));
   };
 
   if (resetSuccess) {
@@ -58,16 +55,16 @@ const ResetPassForm = (): JSX.Element => {
         <FormInput
           register={register}
           type="password"
-          name="password"
-          error={errors.password}
+          name="newPassword"
+          error={errors.newPassword}
           placeholder={t('common.reset_password_page.form.password')}
         />
 
         <FormInput
           register={register}
           type="password"
-          name="confirmPassword"
-          error={errors.confirmPassword}
+          name="confirmNewPassword"
+          error={errors.confirmNewPassword}
           placeholder={t('common.reset_password_page.form.confirm_password')}
         />
 

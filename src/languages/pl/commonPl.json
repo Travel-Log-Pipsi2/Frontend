@@ -41,7 +41,9 @@
         "login_page": {
             "notification": {
                 "success": "Pomyślnie zalogowano!",
-                "error": "Email lub hasło nieprawidłowe!"
+                "error": "Email lub hasło nieprawidłowe!",
+                "not_active": "Konto nie jest aktywne!"
+
             },
             "ui": {
                 "title": "Logowanie",

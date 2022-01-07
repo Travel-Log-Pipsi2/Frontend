@@ -28,12 +28,12 @@ const ForgotPassForm = () => {
   const [resetSend, setResetSend] = useState(false);
 
   const onSubmit: SubmitHandler<IFormInput> = ({ email }) => {
-    AuthAPI.forgotPassword(email).then((data) => {
-      if (data.statusCode === 200) {
+    AuthAPI.forgotPassword(email).then(({ data }) => {
+      if (data.statusCode !== 200) {
+        toast.error(t('common.forgot_password_page.notification.error'));
+      } else {
         toast.success(t('common.forgot_password_page.notification.success'));
         setResetSend(true);
-      } else {
-        toast.error(t('common.forgot_password_page.notification.error'));
       }
     });
   };
