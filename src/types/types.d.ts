@@ -16,7 +16,7 @@ interface IAuthContextType {
   user?: IUser;
   loading: boolean;
   error?: any;
-  loginCtx: () => void;
+  loginCtx: (data) => void;
   signUpCtx: () => void;
   logoutCtx: () => void;
 }

@@ -24,8 +24,25 @@ const Form = styled.form`
   > .input-wrapper {
     width: 100%;
   }
+
+  .my-facebook-button-class {
+    padding: 12px 28px;
+    border: 1px solid ${({ theme }) => theme.colors.black};
+    border-radius: 8px;
+    font-size: ${({ theme }) => theme.typography.size.p};
+    font-weight: 700;
+    cursor: pointer;
+    background-color: ${({ theme }) => theme.colors.white};
+    color: ${({ theme }) => theme.colors.black};
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
-const Button = styled(StyledPrimaryButton)``;
+const Button = styled(StyledPrimaryButton)`
+  width: 200px;
+`;
 
 export { Form, Section, Button };

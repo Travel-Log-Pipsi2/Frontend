@@ -8,6 +8,8 @@ import AuthAPI from 'services/api';
 import { toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
 import { FormInput } from 'components/shared';
+import FacebookLogin from 'react-facebook-login';
+import Cookies from 'js-cookie';
 import { validationSchema } from './schema';
 import * as S from './styles';
 
@@ -18,6 +20,7 @@ type FormData = {
 
 const LoginForm = (): JSX.Element => {
   const { t } = useTranslation(['common']);
+
   const {
     register,
     handleSubmit,
@@ -30,17 +33,20 @@ const LoginForm = (): JSX.Element => {
   const onSubmit: SubmitHandler<FormData> = ({ email, password }) => {
     AuthAPI.login(email, password)
       .then((data) => {
-        loginCtx();
-        console.log(data);
+        loginCtx(data);
         toast.success(t('common.login_page.notification.success'));
       })
       .catch(() => toast.error(t('common.login_page.notification.error')));
   };
 
-  const handleSocialButton = (provider: 'Facebook' | 'Instagram') => {
-    AuthAPI.loginWithSocial(provider)
-      .then((data) => console.log(data))
-      .catch((err) => console.log(err));
+  const responseFacebook = (fbResponse) => {
+    AuthAPI.loginWithFacebook(fbResponse)
+      .then((data) => {
+        Cookies.set('token', data);
+        loginCtx(data);
+        toast.success(t('common.login_page.notification.success'));
+      })
+      .catch((err) => toast.error(err));
   };
 
   if (isAuthenticated) {
@@ -70,13 +76,15 @@ const LoginForm = (): JSX.Element => {
 
         <S.Button type="submit">{t('common.login_page.ui.button')}</S.Button>
 
-        <S.Button type="button" onClick={() => handleSocialButton('Facebook')}>
-          Facebook
-        </S.Button>
-
-        <S.Button type="button" onClick={() => handleSocialButton('Instagram')}>
-          Instagram
-        </S.Button>
+        <FacebookLogin
+          appId="1106139623477619"
+          fields="name,email"
+          scope="public_profile"
+          callback={responseFacebook}
+          icon="fa-facebook"
+          cssClass="my-facebook-button-class"
+          textButton="Facebook"
+        />
 
         <Link to={routes.register}>{t('common.login_page.ui.no_account')}</Link>
 

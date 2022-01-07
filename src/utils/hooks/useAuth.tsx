@@ -135,7 +135,7 @@ export function AuhtProvider({
     if (error) setError(null);
   }, [location.pathname]);
 
-  const loginCtx = () => {
+  const loginCtx = (data) => {
     setUser({
       email: 'test@test.pl',
       name: 'Testowy',

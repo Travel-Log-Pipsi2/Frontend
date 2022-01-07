@@ -13,7 +13,7 @@ const StyledPrimaryButton = styled.button`
   ${mixin}
   background-color: ${({ theme }) => theme.colors.primary[500]};
   border-color: ${({ theme }) => theme.colors.primary[500]};
-  color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.colors.white};
 `;
 
 const StyledGhostButton = styled.button`
