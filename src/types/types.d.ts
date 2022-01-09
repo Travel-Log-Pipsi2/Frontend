@@ -3,7 +3,8 @@ import { ITheme } from 'styles/styled';
 
 interface IUser {
   email: string;
-  name: string;
+  username: string;
+  id: string;
   places: IPlace[];
   notifications: INotification[];
   statistics: {
@@ -19,6 +20,7 @@ interface IAuthContextType {
   loginCtx: (data) => void;
   signUpCtx: () => void;
   logoutCtx: () => void;
+  updateUserData: () => void;
 }
 
 interface IAddTravelContextType {
@@ -38,7 +40,7 @@ interface IThemeContext {
 }
 
 interface ITravel {
-  desc?: string;
+  description?: string;
   startDate: Date;
   endDate: Date;
 }

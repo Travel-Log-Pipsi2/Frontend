@@ -32,7 +32,8 @@ const RegisterForm = (): JSX.Element => {
 
   const onSubmit: SubmitHandler<IFormInput> = (values) => {
     AuthAPI.register(values)
-      .then(() => {
+      .then((res) => {
+        console.log(res);
         setAccCreated(true);
         toast.success(t('common.register_page.notification.success'));
       })

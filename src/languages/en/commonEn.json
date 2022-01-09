@@ -19,7 +19,8 @@
         "map": {
             "markers": {
                 "add_new": {
-                    "button": "Set point"
+                    "button": "Set point",
+                    "existing": "Add"
                 }
             }
         },
@@ -119,6 +120,7 @@
             "ui": {
                 "title": "Profile",
                 "stats": {
+                    "title": "Statistics",
                     "all_places": "Places visited",
                     "all_travels": "Travels made",
                     "all_countries": "Countries visited",
@@ -126,6 +128,12 @@
                     "most_visited_country": "Favorite country",
                     "curr_year_countries": "Countries this year",
                     "curr_year_travels": "Travels this year"
+                },
+                "info": {
+                    "title": "User",
+                    "logout_btn": "Logout",
+                    "name": "Name",
+                    "email": "Email"
                 }
             }
         }

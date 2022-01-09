@@ -7,6 +7,8 @@ import { toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
 import { FormInput } from 'components/shared';
 import DateInput from 'components/shared/DateInput';
+import AuthAPI from 'services/api';
+import useAuth from 'utils/hooks/useAuth';
 import { validationSchema } from './schema';
 import * as S from './styles';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -16,12 +18,13 @@ interface IFormInput {
   country: string;
   longitude: number;
   latitude: number;
-  desc: string;
+  description: string;
   startDate: Date;
   endDate: Date;
 }
 
 const AddTravelForm = (): JSX.Element => {
+  const { updateUserData } = useAuth();
   const { geoData } = useContext(AddTravelContext);
   const { t } = useTranslation('common');
 
@@ -42,14 +45,18 @@ const AddTravelForm = (): JSX.Element => {
         longitude: geoData.longitude,
         latitude: geoData.latitude,
         country: geoData.name.split(', ').slice(-1)[0],
-        desc: '',
+        description: '',
       });
   }, [geoData]);
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
-    toast.success(t('common.add_travel.notification.success'));
-    console.log(data);
-    reset({});
+    AuthAPI.createTravel(data)
+      .then(() => {
+        toast.success(t('common.add_travel.notification.success'));
+        reset({});
+        updateUserData();
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -99,7 +106,7 @@ const AddTravelForm = (): JSX.Element => {
         />
 
         <S.Textarea
-          {...register('desc')}
+          {...register('description')}
           placeholder={t('common.add_travel.form.description')}
         />
 

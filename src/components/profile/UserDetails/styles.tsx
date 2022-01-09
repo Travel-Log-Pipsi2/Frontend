@@ -1,10 +1,13 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  border-radius: 8px;
+  margin-top: 24px;
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
   padding: 12px;
-  margin-top: 32px;
+
+  display: flex;
+  flex-direction: column;
 
   h3 {
     color: ${(props) => props.theme.colors.black};
@@ -17,8 +20,8 @@ const Wrapper = styled.div`
 
     li {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      gap: 8px;
 
       span {
         &:first-child {
@@ -26,12 +29,16 @@ const Wrapper = styled.div`
         }
 
         &:last-child {
-          font-size: 1.25rem;
           font-weight: 600;
           color: ${(props) => props.theme.colors.primary[500]};
         }
       }
     }
+  }
+
+  > button {
+    margin-top: 24px;
+    margin-inline: auto;
   }
 `;
 

@@ -8,6 +8,7 @@ const Nav = styled.nav<{ isHidden: boolean }>`
   height: 64px;
   background-color: ${({ theme }) => theme.colors.white};
   transition: bottom 400ms ease;
+  border: 1px solid red;
 
   box-shadow: ${(props) => !props.isHidden && '0 -8px 16px rgba(0, 0, 0, 0.3)'};
 
@@ -28,7 +29,7 @@ const Nav = styled.nav<{ isHidden: boolean }>`
     height: 100%;
 
     @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
-      width: 300px;
+      width: 440px;
     }
 
     li {

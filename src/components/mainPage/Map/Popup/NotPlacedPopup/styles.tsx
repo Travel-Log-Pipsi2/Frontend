@@ -1,4 +1,4 @@
-import { StyledGhostButton } from 'components/shared';
+import { StyledPrimaryButton } from 'components/shared';
 import { Popup } from 'react-map-gl';
 import styled from 'styled-components';
 
@@ -28,6 +28,6 @@ const StyledPopup = styled(Popup)`
   }
 `;
 
-const Button = styled(StyledGhostButton)``;
+const Button = styled(StyledPrimaryButton)``;
 
 export { StyledPopup, Button };

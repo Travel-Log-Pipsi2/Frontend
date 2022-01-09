@@ -4,6 +4,7 @@ import styled from 'styled-components';
 const Section = styled.div`
   margin-inline: auto;
   margin-top: 72px;
+  max-width: 400px;
 
   a {
     color: ${({ theme }) => theme.colors.black};

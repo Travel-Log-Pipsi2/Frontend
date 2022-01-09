@@ -1,7 +1,15 @@
+/* eslint-disable no-underscore-dangle */
+
 const getFullDate = (date: Date): string => {
-  const day = date.getDate();
-  const month = date.getMonth() + 1;
-  const year = date.getFullYear();
+  let _date = date;
+
+  if (typeof date === 'string') {
+    _date = new Date(date);
+  }
+
+  const day = _date.getDate();
+  const month = _date.getMonth() + 1;
+  const year = _date.getFullYear();
 
   return `${day < 10 ? `0${day}` : day}.${
     month < 10 ? `0${month}` : month

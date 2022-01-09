@@ -29,9 +29,6 @@ const Map = (): JSX.Element => {
   const [userMarkers, setUserMarkers] = useState([]);
   const { width } = useWindowDimensions();
 
-  console.log('CASE', user);
-  console.log('IS AUTH', isAuthenticated);
-
   useEffect(() => {
     if (width >= 1024) {
       setMapSettings({ width: '100%', height: '100%' });

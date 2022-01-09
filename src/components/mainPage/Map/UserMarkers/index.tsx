@@ -1,4 +1,10 @@
-import { useState } from 'react';
+import { StyledGhostButton } from 'components/shared';
+import { routes } from 'constants/routes';
+import AddTravelContext from 'context/addTravel';
+import { useContext, useState } from 'react';
+
+import { useTranslation } from 'react-i18next';
+import { useHistory } from 'react-router-dom';
 import { IPlace } from 'types/types';
 import getFullDate from 'utils/functions/getFullDate';
 import CustomMarker from '../CustomMarker';
@@ -9,7 +15,21 @@ interface UserMarkersProps {
 }
 
 const UserMarkers = ({ markers }: UserMarkersProps): JSX.Element => {
+  const { t } = useTranslation('common');
   const [openMarker, setOpenMarker] = useState(null);
+  const { initAdd } = useContext(AddTravelContext);
+  const history = useHistory();
+
+  const handleAddClick = (marker) => {
+    initAdd({
+      text: marker.name,
+      latitude: marker.latitude,
+      longitude: marker.longitude,
+      name: marker.country,
+    });
+    history.push(routes.addTravel);
+  };
+
   return (
     <>
       {markers.map((marker, index) => (
@@ -30,9 +50,16 @@ const UserMarkers = ({ markers }: UserMarkersProps): JSX.Element => {
                     <span> - </span>
                     <span>{getFullDate(travel.endDate)}</span>
                   </h4>
-                  <p>{travel.desc}</p>
+                  <p>{travel.description}</p>
                 </div>
               ))}
+              <StyledGhostButton
+                small
+                onClick={() => handleAddClick(marker)}
+                style={{ marginTop: 20, marginLeft: 'auto' }}
+              >
+                {t('common.map.markers.add_new.existing')}
+              </StyledGhostButton>
             </PlacedPopup>
           )}
         </>

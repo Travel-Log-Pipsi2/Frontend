@@ -57,19 +57,21 @@ const Travel = styled.li`
   }
 
   button {
-    display: none;
     position: absolute;
     right: 0;
     padding: 2px 4px;
     text-transform: uppercase;
-    background-color: ${(props) => props.theme.colors.pastelDanger};
+    background-color: ${(props) => props.theme.colors.pastelDanger[500]};
     font-size: 0.75rem;
     cursor: pointer;
+
+    &:hover {
+      background-color: ${(props) => props.theme.colors.pastelDanger[700]};
+    }
   }
 
   &:hover {
     button {
-      display: block;
     }
   }
 `;

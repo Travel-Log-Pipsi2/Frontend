@@ -1,4 +1,4 @@
-import { Statistics } from 'components/profile';
+import { Statistics, UserDetails } from 'components/profile';
 import { useTranslation } from 'react-i18next';
 
 const Profile = (): JSX.Element => {
@@ -8,6 +8,7 @@ const Profile = (): JSX.Element => {
     <section>
       <h2>{t('common.profile_page.ui.title')}</h2>
       <Statistics />
+      <UserDetails />
     </section>
   );
 };

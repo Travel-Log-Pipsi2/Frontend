@@ -36,7 +36,7 @@ const LoginForm = (): JSX.Element => {
           toast.error(t('common.login_page.notification.not_active'));
         } else {
           toast.success(t('common.login_page.notification.success'));
-          loginCtx(data);
+          loginCtx(data.content);
         }
       })
       .catch(() => toast.error(t('common.login_page.notification.error')));
@@ -45,7 +45,7 @@ const LoginForm = (): JSX.Element => {
   const responseFacebook = (fbResponse) => {
     AuthAPI.loginWithFacebook(fbResponse)
       .then(({ data }) => {
-        loginCtx(data);
+        loginCtx(data.content);
         toast.success(t('common.login_page.notification.success'));
       })
       .catch((err) => toast.error(err));

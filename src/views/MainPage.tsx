@@ -1,5 +1,6 @@
 import { Map } from 'components';
 import { routes } from 'constants/routes';
+import { Suspense } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import styled from 'styled-components';
 import AddTravel from './Main/AddTravel';
@@ -43,14 +44,16 @@ const SectionStyled = styled.section`
 const MainPage = (): JSX.Element => (
   <SectionStyled>
     <Map />
-    <div className="control-wrapper">
-      <Switch>
-        <Route exact path={routes.addTravel} component={AddTravel} />
-        <Route exact path={routes.travels} component={Travels} />
-        <Route exact path={routes.friends} component={Friends} />
-        <Route exact path={routes.profile} component={Profile} />
-      </Switch>
-    </div>
+    <Suspense fallback="Loading...">
+      <div className="control-wrapper">
+        <Switch>
+          <Route exact path={routes.addTravel} component={AddTravel} />
+          <Route exact path={routes.travels} component={Travels} />
+          <Route exact path={routes.friends} component={Friends} />
+          <Route exact path={routes.profile} component={Profile} />
+        </Switch>
+      </div>
+    </Suspense>
   </SectionStyled>
 );
 

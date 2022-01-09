@@ -15,7 +15,7 @@ const validationSchema = Yup.object({
   longitude: Yup.string()
     .required('common.yup.required')
     .matches(longitudeRegex, 'common.yup.longitude'),
-  desc: Yup.string(),
+  description: Yup.string(),
   startDate: Yup.date().required('common.yup.required'),
   endDate: Yup.date().required('common.yup.required'),
 });
