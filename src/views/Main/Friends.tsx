@@ -1,4 +1,4 @@
-import { Notifications } from 'components/friends';
+import { FriendsList, Notifications, SendRequest } from 'components/friends';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 
@@ -16,6 +16,8 @@ const Friends = () => {
     <SectionWrapper>
       <h2>{t('common.friends_page.ui.title')}</h2>
       <Notifications />
+      <SendRequest />
+      <FriendsList />
     </SectionWrapper>
   );
 };

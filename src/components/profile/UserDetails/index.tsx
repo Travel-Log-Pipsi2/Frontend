@@ -19,6 +19,10 @@ const UserDetails = () => {
 
       <ul>
         <li>
+          <span>{'ID: '}</span>
+          <span>{user.id}</span>
+        </li>
+        <li>
           <span>{`${t('common.profile_page.ui.info.name')}: `}</span>
           <span>{user.username}</span>
         </li>

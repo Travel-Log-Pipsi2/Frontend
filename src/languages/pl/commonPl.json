@@ -111,8 +111,27 @@
             "ui": {
                 "title": "Znajomi",
                 "title_request":"Zaproszenia",
+                "title_send": "Zaproś",
+                "title_friends": "Znajomi",
                 "accept_request": "Akcpetuj",
                 "decline_request": "Odrzuć"
+            },
+            "form": {
+                "user_id": "ID użytkownika",
+                "send_btn": "Wyślij zaproszenie"
+            }
+            ,
+            "notifications": {
+                "send": {
+
+                    "success": "Zaproszenie wysłano pomyślnie",
+                    "error": "Coś poszło nie tak! Spróbuj ponownie!"
+                },
+                "requests": {
+                    "accept": "Przyjęto zaproszenie",
+                    "decline": "Odrzucono zaproszenie",
+                    "error": "Coś poszło nie tak! Spróbuj ponownie!"
+                }
             }
         },
         "profile_page": {

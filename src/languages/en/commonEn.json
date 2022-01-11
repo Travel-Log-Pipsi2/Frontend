@@ -112,8 +112,25 @@
             "ui": {
                 "title": "Friends",
                 "title_request":"Requests",
+                "title_send": "Invite",
+                "title_friends": "Friends",
                 "accept_request": "Accept",
                 "decline_request": "Decline"
+            },
+            "form": {
+                "user_id": "User ID",
+                "send_btn": "Send request"
+            },
+            "notifications": {
+                "send" : {
+                    "success": "The invitation was sent successfully",
+                    "error": "Something went wrong! Try again! "
+                },
+                "requests": {
+                    "accept": "Invitation accepted",
+                    "decline": "Invitation rejected ",
+                    "error": "Something went wrong! Try again! "
+                }
             }
         },
         "profile_page": {

@@ -73,6 +73,45 @@ class AuthService {
       },
       ...this.getConfig(),
     });
+
+  getFriends = () =>
+    axios.get<any>(`${this.baseUrl}/Friend/Friends`, this.getConfig());
+
+  getInvites = () =>
+    axios.get<any>(`${this.baseUrl}/Friend/Invites`, this.getConfig());
+
+  sendInvite = (userId) =>
+    axios.post<any>(
+      `${this.baseUrl}/Friend/Invite/${userId}`,
+      null,
+      this.getConfig()
+    );
+
+  acceptInvite = (invitationId) =>
+    axios.put<any>(
+      `${this.baseUrl}/Friend/Accept/${invitationId}`,
+      {},
+      this.getConfig()
+    );
+
+  deleteInvite = (invitationId) =>
+    axios.delete<any>(
+      `${this.baseUrl}/Friend/Delete-invitation/${invitationId}`,
+      this.getConfig()
+    );
+
+  deleteFriend = (userId) =>
+    axios.delete<any>(
+      `${this.baseUrl}/Friend/Delete-friend/${userId}`,
+      this.getConfig()
+    );
+
+  updateInvite = (invitationId) =>
+    axios.put<any>(
+      `${this.baseUrl}/Friend/Read/${invitationId}`,
+      {},
+      this.getConfig()
+    );
 }
 
 const AuthAPI = new AuthService();

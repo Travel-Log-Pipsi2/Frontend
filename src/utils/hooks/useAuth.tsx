@@ -49,6 +49,32 @@ export function AuhtProvider({
       .catch((err) => console.log(err));
   };
 
+  const setInvites = () => {
+    AuthAPI.getInvites()
+      .then(({ data }) => {
+        console.log(data);
+        const { content = {} } = data;
+        setUser((prev) => ({
+          ...prev,
+          notifications: content,
+        }));
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const setFriends = () => {
+    AuthAPI.getFriends()
+      .then(({ data }) => {
+        console.log(data);
+        const { content = {} } = data;
+        setUser((prev) => ({
+          ...prev,
+          friends: content,
+        }));
+      })
+      .catch((err) => console.log(err));
+  };
+
   const updateUserData = async () => {
     let id = '';
     await AuthAPI.getUserInfo()
@@ -64,6 +90,8 @@ export function AuhtProvider({
       .then((resId) => {
         setPlaces(resId);
         setStats();
+        setInvites();
+        setFriends();
       })
       .catch((err) => console.log(err));
     return id;
@@ -76,8 +104,9 @@ export function AuhtProvider({
       username: '',
       id: '',
       places: [],
-      notifications: dummyNotification,
+      notifications: [],
       statistics: {},
+      friends: [],
     });
     updateUserData();
     setAuthenticated(true);

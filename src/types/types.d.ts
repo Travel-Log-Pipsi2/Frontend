@@ -10,6 +10,7 @@ interface IUser {
   statistics: {
     [key: string]: string | number;
   };
+  friends: any;
 }
 
 interface IAuthContextType {
@@ -54,9 +55,10 @@ interface IPlace {
 }
 
 interface INotification {
-  sender: stringify;
   notification: boolean;
-  done: boolean;
+  username: string;
+  id: number;
+  userId: string;
 }
 
 export {
