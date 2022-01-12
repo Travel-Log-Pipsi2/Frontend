@@ -52,7 +52,6 @@ export function AuhtProvider({
   const setInvites = () => {
     AuthAPI.getInvites()
       .then(({ data }) => {
-        console.log(data);
         const { content = {} } = data;
         setUser((prev) => ({
           ...prev,
@@ -65,7 +64,6 @@ export function AuhtProvider({
   const setFriends = () => {
     AuthAPI.getFriends()
       .then(({ data }) => {
-        console.log(data);
         const { content = {} } = data;
         setUser((prev) => ({
           ...prev,

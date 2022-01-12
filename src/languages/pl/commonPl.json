@@ -114,7 +114,8 @@
                 "title_send": "Zaproś",
                 "title_friends": "Znajomi",
                 "accept_request": "Akcpetuj",
-                "decline_request": "Odrzuć"
+                "decline_request": "Odrzuć",
+                "delete_btn": "Usuń"
             },
             "form": {
                 "user_id": "ID użytkownika",
@@ -123,7 +124,6 @@
             ,
             "notifications": {
                 "send": {
-
                     "success": "Zaproszenie wysłano pomyślnie",
                     "error": "Coś poszło nie tak! Spróbuj ponownie!"
                 },

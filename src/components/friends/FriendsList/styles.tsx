@@ -16,16 +16,35 @@ const Wrapper = styled.div`
     padding-inline: 8px;
 
     li {
-      color: ${(props) => props.theme.colors.primary[500]};
-      cursor: pointer;
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin-block: 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
 
-      transition: color 350ms ease;
+      > span {
+        color: ${(props) => props.theme.colors.primary[500]};
+        cursor: pointer;
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-block: 4px;
 
-      &:hover {
-        color: ${(props) => props.theme.colors.primary[700]};
+        transition: color 350ms ease;
+
+        &:hover {
+          color: ${(props) => props.theme.colors.primary[700]};
+        }
+      }
+
+      button {
+        right: 0;
+        padding: 2px 4px;
+        text-transform: uppercase;
+        background-color: ${(props) => props.theme.colors.pastelDanger[500]};
+        font-size: 0.75rem;
+        cursor: pointer;
+
+        &:hover {
+          background-color: ${(props) => props.theme.colors.pastelDanger[700]};
+        }
       }
     }
   }

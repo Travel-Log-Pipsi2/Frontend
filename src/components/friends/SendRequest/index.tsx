@@ -13,6 +13,7 @@ const SendRequest = (): JSX.Element => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<ISendRequest>({
     resolver: yupResolver(validationSchema),
   });
@@ -24,6 +25,7 @@ const SendRequest = (): JSX.Element => {
       .then(() => {
         toast.success(t('common.friends_page.notifications.send.success'));
         updateUserData();
+        reset();
       })
       .catch(() =>
         toast.error(t('common.friends_page.notifications.send.error'))

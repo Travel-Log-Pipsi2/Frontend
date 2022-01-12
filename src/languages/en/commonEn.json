@@ -115,7 +115,9 @@
                 "title_send": "Invite",
                 "title_friends": "Friends",
                 "accept_request": "Accept",
-                "decline_request": "Decline"
+                "decline_request": "Decline",
+                "delete_btn": "Delete"
+
             },
             "form": {
                 "user_id": "User ID",
