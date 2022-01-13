@@ -10,6 +10,10 @@ const Section = styled.div`
     color: ${({ theme }) => theme.colors.black};
     font-size: ${({ theme }) => theme.typography.size.small};
   }
+
+  h1 {
+    color: ${(props) => props.theme.colors.black};
+  }
 `;
 
 const Form = styled.form`

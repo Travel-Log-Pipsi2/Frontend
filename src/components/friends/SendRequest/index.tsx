@@ -1,3 +1,4 @@
+/* eslint-disable function-paren-newline */
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FormInput, StyledPrimaryButton } from 'components/shared';
 import { SubmitHandler, useForm } from 'react-hook-form';

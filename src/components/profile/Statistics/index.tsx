@@ -13,11 +13,9 @@ const Statistics = (): JSX.Element => {
     currentYearTravelCount,
     dayTravelCount,
     mostTravelledToCountry,
-    mostTravelledCountryAmount,
     travelCount,
     markerCount,
   } = statistics;
-  console.log(statistics);
 
   return (
     <S.Wrapper>

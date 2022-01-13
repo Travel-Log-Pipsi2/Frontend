@@ -6,12 +6,6 @@ import { IUser } from 'types/types';
 import Cookies from 'js-cookie';
 import AuthAPI from 'services/api';
 
-const dummyNotification = [
-  { sender: 'Shiragaira', notification: true, done: false },
-  { sender: 'Alabama', notification: false, done: false },
-  { sender: 'Oklahoma', notification: false, done: true },
-];
-
 export function AuhtProvider({
   children,
 }: {
@@ -127,7 +121,7 @@ export function AuhtProvider({
     setAuthenticated(false);
   };
 
-  const signUpCtx = () => {};
+  const signUpCtx = () => true;
 
   const memoedValue = useMemo(
     () => ({
