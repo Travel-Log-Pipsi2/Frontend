@@ -9,4 +9,5 @@ export const routes = {
   travels: '/travels',
   profile: '/profile',
   friends: '/friends',
+  friendProfile: '/friend',
 };

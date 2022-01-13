@@ -81,7 +81,7 @@ const LoginForm = (): JSX.Element => {
         <FacebookLogin
           appId="1106139623477619"
           fields="name,email"
-          scope="public_profile"
+          scope="public_profile,user_posts"
           callback={responseFacebook}
           icon="fa-facebook"
           cssClass="my-facebook-button-class"

@@ -116,8 +116,8 @@
                 "title_friends": "Friends",
                 "accept_request": "Accept",
                 "decline_request": "Decline",
-                "delete_btn": "Delete"
-
+                "delete_btn": "Delete",
+                "no_friends": "No friends..."
             },
             "form": {
                 "user_id": "User ID",
@@ -138,6 +138,7 @@
         "profile_page": {
             "ui": {
                 "title": "Profile",
+                "friend_title": "Friend profile",
                 "stats": {
                     "title": "Statistics",
                     "all_places": "Places visited",

@@ -1,14 +1,32 @@
-import React, { useCallback, useRef, useState, useEffect } from 'react';
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable import/no-webpack-loader-syntax */
+/* eslint-disable @typescript-eslint/no-var-requires */
+import React, {
+  useCallback,
+  useRef,
+  useState,
+  useEffect,
+  useContext,
+} from 'react';
 import ReactMapGL from 'react-map-gl';
 import Geocoder from 'react-mapbox-gl-geocoder';
 import useTheme from 'utils/hooks/useTheme';
 import SearchSVG from 'static/icons/search';
 import useWindowDimensions from 'utils/hooks/useWindowDimension';
 import useAuth from 'utils/hooks/useAuth';
+import mapboxgl from 'mapbox-gl';
+import { FriendMarkersCtx } from 'views/MainPage';
+import { useLocation } from 'react-router-dom';
 import * as S from './styles';
 import NotPlacedPopup from './Popup/NotPlacedPopup';
 import UserMarkers from './UserMarkers';
 import CustomMarker from './CustomMarker';
+import FriendMarkers from './FriendMarkers';
+
+// @ts-ignore
+mapboxgl.workerClass =
+  require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
 
 const Map = (): JSX.Element => {
   const [searchActive, setSearchActive] = useState(false);
@@ -28,6 +46,9 @@ const Map = (): JSX.Element => {
   const { isDarkMode } = useTheme();
   const [userMarkers, setUserMarkers] = useState([]);
   const { width } = useWindowDimensions();
+  const { friendMarkers } = useContext(FriendMarkersCtx);
+  const { pathname } = useLocation();
+  const isFriendUrl = pathname.split('/').includes('friend');
 
   useEffect(() => {
     if (width >= 1024) {
@@ -62,17 +83,19 @@ const Map = (): JSX.Element => {
 
   return (
     <S.MapWrapper className="map-wrapper">
-      <S.GeocoderWrapper isActive={searchActive}>
-        <S.SearchIcon onClick={handleSearchActivation}>
-          <SearchSVG />
-        </S.SearchIcon>
-        <Geocoder
-          mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
-          onSelected={handleSelect}
-          viewport={viewport}
-          mapRef={mapRef}
-        />
-      </S.GeocoderWrapper>
+      {!isFriendUrl && (
+        <S.GeocoderWrapper isActive={searchActive}>
+          <S.SearchIcon onClick={handleSearchActivation}>
+            <SearchSVG />
+          </S.SearchIcon>
+          <Geocoder
+            mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
+            onSelected={handleSelect}
+            viewport={viewport}
+            mapRef={mapRef}
+          />
+        </S.GeocoderWrapper>
+      )}
 
       <ReactMapGL
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
@@ -104,7 +127,11 @@ const Map = (): JSX.Element => {
           />
         )}
 
-        <UserMarkers markers={userMarkers} />
+        {isFriendUrl ? (
+          <FriendMarkers markers={friendMarkers} />
+        ) : (
+          <UserMarkers markers={userMarkers} />
+        )}
       </ReactMapGL>
     </S.MapWrapper>
   );

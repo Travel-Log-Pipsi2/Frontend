@@ -63,7 +63,10 @@ const Travel = styled.li`
     text-transform: uppercase;
     background-color: ${(props) => props.theme.colors.pastelDanger[500]};
     font-size: 0.75rem;
+    border-radius: 4px;
     cursor: pointer;
+    color: ${(props) => props.theme.colors.white};
+    font-weight: 600;
 
     &:hover {
       background-color: ${(props) => props.theme.colors.pastelDanger[700]};

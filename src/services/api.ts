@@ -47,8 +47,17 @@ class AuthService {
   getUserInfo = () =>
     axios.get<any>(`${this.baseUrl}/UserInfo/GetInfo`, this.getConfig());
 
+  getUserInfoById = (userId) =>
+    axios.get<any>(
+      `${this.baseUrl}/UserInfo/GetInfo/${userId}`,
+      this.getConfig()
+    );
+
   getUserStats = () =>
     axios.get<any>(`${this.baseUrl}/UserInfo/GetStats/`, this.getConfig());
+
+  getUserStatsById = (id) =>
+    axios.get<any>(`${this.baseUrl}/UserInfo/GetStats/${id}`, this.getConfig());
 
   getMarkers = () =>
     axios.get<any>(`${this.baseUrl}/Marker/GetMarkers`, this.getConfig());

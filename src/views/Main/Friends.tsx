@@ -9,7 +9,7 @@ const SectionWrapper = styled.section`
   }
 `;
 
-const Friends = () => {
+const Friends = (): JSX.Element => {
   const { t } = useTranslation('common');
 
   return (

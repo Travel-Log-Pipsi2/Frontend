@@ -115,7 +115,8 @@
                 "title_friends": "Znajomi",
                 "accept_request": "Akcpetuj",
                 "decline_request": "Odrzuć",
-                "delete_btn": "Usuń"
+                "delete_btn": "Usuń",
+                "no_friends": "Brak znajomych..."
             },
             "form": {
                 "user_id": "ID użytkownika",
@@ -137,6 +138,7 @@
         "profile_page": {
             "ui": {
                 "title": "Profil",
+                "friend_title": "Profil znajomego",
                 "stats": {
                     "title": "Statystyki",
                     "all_places": "Odwiedzone miejsca",

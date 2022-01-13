@@ -11,8 +11,7 @@ const StyledMarker = styled(Marker)<{ color: string }>`
     path {
       fill: ${(props) =>
         props.color === 'blue' && props.theme.colors.primary[500]};
-      fill: ${(props) =>
-        props.color === 'purple' && props.theme.colors.primary[300]};
+      fill: ${(props) => props.color === 'teal' && 'teal'};
     }
   }
 `;
