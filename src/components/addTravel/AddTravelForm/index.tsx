@@ -9,15 +9,15 @@ import { FormInput } from 'components/shared';
 import DateInput from 'components/shared/DateInput';
 import AuthAPI from 'services/api';
 import useAuth from 'utils/hooks/useAuth';
-import { validationSchema } from './schema';
+import { cutDecimals, validationSchema } from './schema';
 import * as S from './styles';
 import 'react-datepicker/dist/react-datepicker.css';
 
 interface IFormInput {
   name: string;
   country: string;
-  longitude: number;
-  latitude: number;
+  longitude: string;
+  latitude: string;
   description: string;
   startDate: Date;
   endDate: Date;
@@ -33,21 +33,29 @@ const AddTravelForm = (): JSX.Element => {
     handleSubmit,
     reset,
     control,
+    watch,
+    setValue,
     formState: { errors },
   } = useForm<IFormInput>({
     resolver: yupResolver(validationSchema),
   });
+  const watched = watch();
 
   useEffect(() => {
     geoData &&
       reset({
         name: geoData.text,
-        longitude: geoData.longitude,
-        latitude: geoData.latitude,
+        longitude: geoData.longitude.toString(),
+        latitude: geoData.latitude.toString(),
         country: geoData.name.split(', ').slice(-1)[0],
         description: '',
       });
   }, [geoData]);
+
+  useEffect(() => {
+    setValue('latitude', cutDecimals(watched.latitude));
+    setValue('longitude', cutDecimals(watched.longitude));
+  }, [watched.latitude, watched.longitude]);
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
     AuthAPI.createTravel(data)

@@ -14,7 +14,7 @@ const Profile = (): JSX.Element => {
         <h2>{t('common.profile_page.ui.friend_title')}</h2>
       )}
       <Statistics />
-      <UserDetails />
+      {!isFriendView && <UserDetails />}
     </section>
   );
 };
