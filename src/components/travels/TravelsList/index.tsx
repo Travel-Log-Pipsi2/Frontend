@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useTranslation } from 'react-i18next';
 import AuthAPI from 'services/api';
@@ -27,26 +27,30 @@ const TravelsList = (): JSX.Element => {
     <S.Wrapper>
       <h2>{t('common.travels.ui.title')}</h2>
 
-      {places.map(({ name, country, travels }) => (
-        <S.Places>
-          <h3>{name}</h3>
-          <h4>{country}</h4>
+      {places.length > 0 ? (
+        places.map(({ name, country, travels }) => (
+          <S.Places key={country}>
+            <h3>{name}</h3>
+            <h4>{country}</h4>
 
-          <S.Travels>
-            {travels?.map(({ description, endDate, startDate, id }) => (
-              <S.Travel>
-                <button type="button" onClick={() => handleDeleteButton(id)}>
-                  {t('common.travels.ui.button_delete')}
-                </button>
-                <span>
-                  {`${getFullDate(startDate)} - ${getFullDate(endDate)}`}
-                </span>
-                <p>{description}</p>
-              </S.Travel>
-            ))}
-          </S.Travels>
-        </S.Places>
-      ))}
+            <S.Travels>
+              {travels?.map(({ description, endDate, startDate, id }) => (
+                <S.Travel key={id}>
+                  <button type="button" onClick={() => handleDeleteButton(id)}>
+                    {t('common.travels.ui.button_delete')}
+                  </button>
+                  <span>
+                    {`${getFullDate(startDate)} - ${getFullDate(endDate)}`}
+                  </span>
+                  <p>{description}</p>
+                </S.Travel>
+              ))}
+            </S.Travels>
+          </S.Places>
+        ))
+      ) : (
+        <p>{t('common.travels.ui.no_travels')}</p>
+      )}
     </S.Wrapper>
   );
 };

@@ -26,12 +26,10 @@ const FriendsList = (): JSX.Element => {
         {friends.length > 0 ? (
           friends.map(({ username, id }) => (
             <li key={id}>
-              <Link to={`${routes.friendProfile}/$`}>
-                <span>{username}</span>
-                <button type="button" onClick={() => handleDelete(id)}>
-                  {t('common.friends_page.ui.delete_btn')}
-                </button>
-              </Link>
+              <Link to={`${routes.friendProfile}/${id}`}>{username}</Link>
+              <button type="button" onClick={() => handleDelete(id)}>
+                {t('common.friends_page.ui.delete_btn')}
+              </button>
             </li>
           ))
         ) : (

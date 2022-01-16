@@ -42,10 +42,12 @@ const SendRequest = (): JSX.Element => {
           register={register}
           name="userId"
           error={errors.userId}
-          placeholder="ID użytkownika"
+          placeholder={t('common.friends_page.form.user_id')}
         />
 
-        <StyledPrimaryButton type="submit">Zaproś</StyledPrimaryButton>
+        <StyledPrimaryButton type="submit">
+          {t('common.friends_page.form.send_btn')}
+        </StyledPrimaryButton>
       </form>
     </S.Wrapper>
   );

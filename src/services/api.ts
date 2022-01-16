@@ -6,12 +6,7 @@ class AuthService {
   readonly baseUrl: string;
 
   constructor() {
-    this.baseUrl = 'https://localhost:44359/api';
-
-    axios
-      .get('https://localhost:44359/api/Test')
-      .then(() => console.log('Connection established'))
-      .catch((err) => console.log(err));
+    this.baseUrl = 'https://travellogapi.azurewebsites.net/api';
   }
 
   private getConfig() {
@@ -76,12 +71,10 @@ class AuthService {
     );
 
   deleteTravel = (travelId) =>
-    axios.delete<any>(`${this.baseUrl}/Marker/DeleteTravel`, {
-      params: {
-        TravelID: travelId,
-      },
-      ...this.getConfig(),
-    });
+    axios.delete<any>(
+      `${this.baseUrl}/Marker/DeleteTravel/${travelId}`,
+      this.getConfig()
+    );
 
   getFriends = () =>
     axios.get<any>(`${this.baseUrl}/Friend/Friends`, this.getConfig());
@@ -121,6 +114,18 @@ class AuthService {
       {},
       this.getConfig()
     );
+
+  fbConnection = (accessToken: string, userProviderId: string) =>
+    axios.get<any>(`${this.baseUrl}/FetchPosts/Facebook/Connect`, {
+      params: {
+        accessToken,
+        userProviderId,
+      },
+      ...this.getConfig(),
+    });
+
+  fbFetchPosts = () =>
+    axios.get<any>(`${this.baseUrl}/FetchPosts/Facebook`, this.getConfig());
 }
 
 const AuthAPI = new AuthService();

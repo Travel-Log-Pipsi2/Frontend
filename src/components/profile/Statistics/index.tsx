@@ -22,8 +22,6 @@ const Statistics = (): JSX.Element => {
   } = statistics;
   const { isFriendView, friendStats, friendMarkers } = useFriendsStatistic();
 
-  setFriendMarkers(friendMarkers);
-
   useEffect(() => {
     if (friendMarkers) {
       setFriendMarkers(friendMarkers);

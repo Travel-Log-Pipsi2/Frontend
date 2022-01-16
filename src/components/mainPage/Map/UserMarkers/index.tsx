@@ -1,7 +1,8 @@
+/* eslint-disable react/no-array-index-key */
 import { StyledGhostButton } from 'components/shared';
 import { routes } from 'constants/routes';
 import AddTravelContext from 'context/addTravel';
-import { useContext, useState } from 'react';
+import { Fragment, useContext, useState } from 'react';
 
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
@@ -33,7 +34,7 @@ const UserMarkers = ({ markers }: UserMarkersProps): JSX.Element => {
   return (
     <>
       {markers.map((marker, index) => (
-        <>
+        <Fragment key={index}>
           <CustomMarker
             longitude={marker.longitude}
             latitude={marker.latitude}
@@ -41,7 +42,11 @@ const UserMarkers = ({ markers }: UserMarkersProps): JSX.Element => {
             color="blue"
           />
           {openMarker === index && (
-            <PlacedPopup marker={marker} closePopup={() => setOpenMarker(null)}>
+            <PlacedPopup
+              key={marker.name}
+              marker={marker}
+              closePopup={() => setOpenMarker(null)}
+            >
               <h3>{marker.name}</h3>
               {marker.travels.map((travel) => (
                 <div>
@@ -62,7 +67,7 @@ const UserMarkers = ({ markers }: UserMarkersProps): JSX.Element => {
               </StyledGhostButton>
             </PlacedPopup>
           )}
-        </>
+        </Fragment>
       ))}
     </>
   );

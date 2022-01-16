@@ -104,7 +104,8 @@
         "travels": {
             "ui": {
                 "title": "Podróże",
-                "button_delete": "Usuń"
+                "button_delete": "Usuń",
+                "no_travels": "Nie dodałeś żadnej podróży..."
             }
         },
         "friends_page": {
@@ -153,8 +154,13 @@
                     "title": "Użytkownik",
                     "logout_btn": "Wyloguj",
                     "name": "Nazwa",
-                    "email": "Email"
+                    "email": "Email",
+                    "facebook": "Pobierz podróże z Facebook"
                 }
+            },
+            "notifications": {
+                "success_fetch": "Udało się dodać posty z facebooka.",
+                "error_fetch": "Coś poszło nie tak! Spróbuj ponownie."
             }
         }
     }

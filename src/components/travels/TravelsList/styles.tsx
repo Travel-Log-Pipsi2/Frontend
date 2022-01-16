@@ -9,6 +9,11 @@ const Wrapper = styled.div`
     text-align: center;
     color: ${(props) => props.theme.colors.black};
   }
+
+  > p {
+    color: ${(props) => props.theme.colors.black};
+    font-size: 1.25rem;
+  }
 `;
 
 const Places = styled.div`

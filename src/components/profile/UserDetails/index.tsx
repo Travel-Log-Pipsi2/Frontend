@@ -1,18 +1,32 @@
+/* eslint-disable function-paren-newline */
 import { StyledGhostButton } from 'components/shared';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 import useAuth from 'utils/hooks/useAuth';
 import useFriendsStatistic from 'utils/hooks/useFriendStatistics';
 import FacebookLogin from 'react-facebook-login';
+import AuthAPI from 'services/api';
 import * as S from './styles';
 
 const UserDetails = (): JSX.Element => {
   const { t } = useTranslation('common');
-  const { logoutCtx, user } = useAuth();
+  const { logoutCtx, user, updateUserData } = useAuth();
   const { isFriendView } = useFriendsStatistic();
 
   const responseFacebook = (fbResponse) => {
-    console.log(fbResponse);
+    const { accessToken = '', userID = '' } = fbResponse;
+    if (accessToken !== '' && userID !== '') {
+      AuthAPI.fbConnection(accessToken, userID)
+        .then(() => {
+          AuthAPI.fbFetchPosts().then(() => {
+            updateUserData();
+            toast.success(t('common.profile_page.notifications.success_fetch'));
+          });
+        })
+        .catch(() =>
+          toast.error(t('common.profile_page.notifications.error_fetch'))
+        );
+    }
   };
 
   const handleLogoutButton = () => {
@@ -40,22 +54,23 @@ const UserDetails = (): JSX.Element => {
           </li>
         )}
       </ul>
-      {!isFriendView && (
-        <StyledGhostButton onClick={handleLogoutButton}>
-          {t('common.profile_page.ui.info.logout_btn')}
-        </StyledGhostButton>
-      )}
 
       {!isFriendView && (
         <FacebookLogin
-          appId="1106139623477619"
+          appId={process.env.REACT_APP_FACEBOOK_APP_ID}
           fields="name,email"
           scope="public_profile,user_posts"
           callback={responseFacebook}
           icon="fa-facebook"
           cssClass="my-facebook-button-class"
-          textButton="Facebook"
+          textButton={t('common.profile_page.ui.info.facebook')}
         />
+      )}
+
+      {!isFriendView && (
+        <StyledGhostButton onClick={handleLogoutButton}>
+          {t('common.profile_page.ui.info.logout_btn')}
+        </StyledGhostButton>
       )}
     </S.Wrapper>
   );

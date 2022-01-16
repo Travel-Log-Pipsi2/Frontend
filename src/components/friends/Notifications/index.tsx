@@ -1,4 +1,5 @@
 /* eslint-disable function-paren-newline */
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 import AuthAPI from 'services/api';
@@ -9,6 +10,10 @@ const Notifications = (): JSX.Element => {
   const { t } = useTranslation('common');
   const { user, updateUserData } = useAuth();
   const { notifications } = user;
+
+  useEffect(() => {
+    updateUserData();
+  }, []);
 
   const handleAccept = (invitationId: number) => {
     AuthAPI.acceptInvite(invitationId)

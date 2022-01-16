@@ -104,8 +104,8 @@
         "travels": {
             "ui": {
                 "title": "Travels",
-                "button_delete": "Delete"
-
+                "button_delete": "Delete",
+                "no_travels": "You have not added any travel..."
             }
         },
         "friends_page": {
@@ -153,8 +153,13 @@
                     "title": "User",
                     "logout_btn": "Logout",
                     "name": "Name",
-                    "email": "Email"
+                    "email": "Email",
+                    "facebook": "Download travels from Facebook"
                 }
+            },
+            "notifications": {
+                "success_fetch": "Successfully added Facebook posts.",
+                "error_fetch": "Something went wrong! Try again."
             }
         }
     }

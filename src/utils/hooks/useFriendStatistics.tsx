@@ -36,7 +36,7 @@ const useFriendsStatistic = (): FriendViewHookResponse => {
   }, [id]);
 
   useEffect(() => {
-    if (isFriendView) {
+    if (isFriendView && typeof id !== 'undefined') {
       getFriendStatistic();
       getFriendMarkers();
     }
