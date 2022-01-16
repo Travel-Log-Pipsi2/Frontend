@@ -32,11 +32,14 @@ const LoginForm = (): JSX.Element => {
   const onSubmit: SubmitHandler<FormData> = (values) => {
     AuthAPI.login(values)
       .then(({ data }) => {
-        if (data.statusCode !== 200) {
+        console.log(data);
+        if (data.message.includes('not activated')) {
           toast.error(t('common.login_page.notification.not_active'));
+        } else if (data.message.includes('is not correct')) {
+          toast.error(t('common.login_page.notification.bad_credential'));
         } else {
           toast.success(t('common.login_page.notification.success'));
-          loginCtx(data.content);
+          // loginCtx(data.content);
         }
       })
       .catch(() => toast.error(t('common.login_page.notification.error')));

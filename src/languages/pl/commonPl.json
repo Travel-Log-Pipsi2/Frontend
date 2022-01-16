@@ -4,6 +4,7 @@
             "email": "Wprowadź poprawny adres e-email",
             "required": "To pole jest wymagane",
             "password_not_match": "Hasła nie są takie same",
+            "password": "Hasło powinno zawierać przynajmniej 8 znaków, jedną mała literę, jedną dużą literę i jedną cyfrę.",
             "longitude": "Poprawna wartość -180 do 180 i maksymalnie 6 miejsc po przecinku",
             "latitude": "Poprawna wartość -90 do 90 i maksymalnie 6 miejsc po przecinku"
         },
@@ -43,7 +44,8 @@
             "notification": {
                 "success": "Pomyślnie zalogowano!",
                 "error": "Email lub hasło nieprawidłowe!",
-                "not_active": "Konto nie jest aktywne!"
+                "not_active": "Konto nie jest aktywne!",
+                "bad_credential": "Hasło lub email nieprawidłowe"
 
             },
             "ui": {
@@ -61,6 +63,7 @@
             "notification": {
                 "success": "Konto zostało stworzone!",
                 "error": "Coś poszło nie tak! Spróbuj ponownie!"
+
             },
             "ui": {
                 "title": "Rejestracja",

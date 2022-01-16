@@ -4,6 +4,7 @@ import styled from 'styled-components';
 const Section = styled.section`
   margin-inline: auto;
   margin-top: 72px;
+  max-width: 400px;
 
   a {
     color: ${({ theme }) => theme.colors.black};
@@ -24,6 +25,10 @@ const Form = styled.form`
 
   margin-inline: auto;
   padding-inline: 24px;
+
+  > .input-wrapper {
+    width: 100%;
+  }
 `;
 
 const ErrorMessage = styled.p``;
