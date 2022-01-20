@@ -39,7 +39,7 @@ const LoginForm = (): JSX.Element => {
           toast.error(t('common.login_page.notification.bad_credential'));
         } else {
           toast.success(t('common.login_page.notification.success'));
-          // loginCtx(data.content);
+          loginCtx(data.content);
         }
       })
       .catch(() => toast.error(t('common.login_page.notification.error')));
